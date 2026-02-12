@@ -1,0 +1,32 @@
+------------------------------------------------------------
+Player Mov
+
+public float speed;
+
+
+-------------------------------------------------------------
+Player HP
+
+public int hp;
+public int maxHp;
+public float invFrame;
+public float maxInvFrame;
+
+private void Update(){
+if(invFrame > 0) invFrame -= Time.deltaTime;
+
+
+public void Dmg(int dmg){
+	if(ivFrame <= 0)
+		if(hp > dmg){
+			hp -= dmg;
+		}
+		else{
+			Die();
+		}
+	}
+}
+
+public void Die(){
+}
+
