@@ -37,7 +37,7 @@ public class PHp : MonoBehaviour
     }
 
     public void Dmg(int dmg){
-	    if(ivFrame <= 0){
+	    if(invFrame <= 0){
 		    if(hp > dmg){
 			    hp -= dmg;
                 invFrame = maxInvFrame;

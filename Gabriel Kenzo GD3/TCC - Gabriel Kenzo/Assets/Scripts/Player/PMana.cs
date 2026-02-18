@@ -18,7 +18,7 @@ public class PMana : MonoBehaviour
     
     private void Update(){
         if(manaCdwn > 0) manaCdwn -= Time.deltaTime;
-        if(mana < maxMana && manaCdwn <= 0) mana += Tine.deltaTime * multiplier;
+        if(mana < maxMana && manaCdwn <= 0) mana += Time.deltaTime * multiplier;
         else if (mana > maxMana) mana = maxMana;
 
         manaBar.fillAmmount = mana/maxMana;
