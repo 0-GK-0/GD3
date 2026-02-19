@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4663308217199346318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1445941362722125137}
+  - component: {fileID: 5828987919049246337}
+  m_Layer: 0
+  m_Name: Spell7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1445941362722125137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663308217199346318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5828987919049246337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663308217199346318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93906bf8845215c44a8f92b115ecab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRanged: 0
+  isMeleee: 0
+  isRune: 0
+  isCone: 0
+  isSelf: 0
+  isOrbit: 0
+  isLaser: 0
+  spell: {fileID: 4859764592086842014, guid: fc99ead83196bd84899da798280e7f25, type: 3}
+  actualSpell: {fileID: 0}
+  pierce: 0
+  ammount: 0
+  speed: 0
+  damage: 0
+  knockBack: 0
+  atkCooldown: 0
+  currentAtkCooldown: 0
+  poisonDmg: 0
+  slowFactor: 0
+  appliesSpeed: 0
+  appliesSlowness: 0
+  appliesPoison: 0
+  explodes: 0
+  atkKey: 323
+  aim: {fileID: 0}
