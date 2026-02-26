@@ -1,10 +1,10 @@
 using UnityEngine;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerMov : MonoBehaviour
 {
+
     [Header("Values")]
     public float movSpeed;
     public float maxSpeed;

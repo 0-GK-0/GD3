@@ -790,7 +790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &180471129
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3766,14 +3766,14 @@ MonoBehaviour:
   fifthSpace: {fileID: 2046006886}
   sixthSpace: {fileID: 1521750409}
   seventhSpace: {fileID: 399765071}
-  zerothImage: {fileID: 0}
-  firstImage: {fileID: 0}
-  secondImage: {fileID: 0}
-  thirdImage: {fileID: 0}
-  fourthImage: {fileID: 0}
-  fifthImage: {fileID: 0}
-  sixthImage: {fileID: 0}
-  seventhImage: {fileID: 0}
+  zerothImage: {fileID: 239912305}
+  firstImage: {fileID: 400986193}
+  secondImage: {fileID: 1188130667}
+  thirdImage: {fileID: 1034191945}
+  fourthImage: {fileID: 143795260}
+  fifthImage: {fileID: 1034787173}
+  sixthImage: {fileID: 287130232}
+  seventhImage: {fileID: 995220065}
   manaText: {fileID: 139421845}
   cooldownText: {fileID: 1980248991}
   blankSprite: {fileID: 6387814494005134345, guid: c4e37777eb3d22f4182bd3df4ece2c31, type: 3}
@@ -5309,6 +5309,10 @@ PrefabInstance:
     - target: {fileID: 6591741759143733536, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
       propertyPath: m_Name
       value: BasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592209305809451144, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

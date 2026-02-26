@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Menu.unity
+    guid: d5e0d39abb5ddb44c882c72de8af31c2
+  - enabled: 1
+    path: Assets/Scenes/Base.unity
+    guid: 236d911c5f814fa4a9bc33239a14fb80
+  - enabled: 1
+    path: Assets/Scenes/Spaceships/Level1/SmolBoy.unity
+    guid: c618cdd7d0caef242a7e1cd4de95d024
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

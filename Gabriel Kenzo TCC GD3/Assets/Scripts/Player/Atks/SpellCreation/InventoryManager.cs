@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Net.Mail;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.IO.LowLevel.Unsafe;
 
 public class InventoryManager : MonoBehaviour
 {
