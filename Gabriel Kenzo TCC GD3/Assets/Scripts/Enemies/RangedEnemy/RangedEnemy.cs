@@ -40,7 +40,8 @@ public class RangedEnemy : MonoBehaviour
         else
         {
             currentAtkCdwn = atkCdwn;
-            Instantiate(atk, projInstPoint.position, projInstPoint.rotation);
+            anim.Play(atkAnim);
+            if(distance <= maxRunRange) Instantiate(atk, projInstPoint.position, projInstPoint.rotation);
         }
 
         distance = Vector2.Distance(transform.position, player.transform.position);

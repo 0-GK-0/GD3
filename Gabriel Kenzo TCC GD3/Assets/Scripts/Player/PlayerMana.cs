@@ -74,6 +74,7 @@ public class PlayerMana : MonoBehaviour
         noManaText.color = new Color32(255, 255, 255, 255);
         yield return new WaitForSeconds(1);
         noManaText.color = new Color32(255, 255, 255, (byte)Mathf.Lerp(255, 0, 1f));
+        Debug.Log("NoMana");
     }
 
 }

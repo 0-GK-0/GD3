@@ -4571,9 +4571,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: mana
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 1129904889}
+    - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: maxMana
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: noManaText
       value: 
@@ -5194,6 +5202,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7192800328998704390, guid: d7a5af7e3f1c0674ba614be4e09b8e05, type: 3}
   m_PrefabInstance: {fileID: 562039919}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &565355676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565355677}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &565355677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565355676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.141, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1570419031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &567292861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13457,6 +13496,9 @@ GameObject:
   - component: {fileID: 1570419031}
   - component: {fileID: 1570419030}
   - component: {fileID: 1570419029}
+  - component: {fileID: 1570419034}
+  - component: {fileID: 1570419033}
+  - component: {fileID: 1570419032}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -13554,12 +13596,81 @@ Transform:
   m_GameObject: {fileID: 1570419028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.962497, y: 39.702843, z: 0}
+  m_LocalPosition: {x: -13.25, y: 30.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 565355677}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1570419032
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570419028}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &1570419033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570419028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0c08bcb3d4a73488b7f6cb401329d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  hp: 10
+  anim: {fileID: 1570419029}
+  baseAnim: Attack
+  reset: 0
+--- !u!114 &1570419034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570419028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e5aae6e7bf3eb49b7b9666ce7d7700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
+  speed: 5
+  atk: {fileID: 2274440733069048851, guid: 09467229a75dc1140a270300febdf61b, type: 3}
+  atkCdwn: 1.2
+  currentAtkCdwn: 1.2
+  pursuitRange: 5
+  startRunRange: 7
+  maxRunRange: 15
+  rb: {fileID: 1570419032}
+  pHealth: {fileID: 1100542828}
+  projInstPoint: {fileID: 565355677}
+  eHealth: {fileID: 1570419033}
+  anim: {fileID: 1570419029}
+  atkAnim: Attack
 --- !u!4 &1572830940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 278580094733850338, guid: f8db25565cd3cd24bb5d3cce29098a6d, type: 3}
