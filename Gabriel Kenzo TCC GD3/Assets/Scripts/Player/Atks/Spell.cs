@@ -1,39 +1,29 @@
-using System;
-using System.Data.Common;
-using NUnit.Framework;
 using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
+    public enum spellType
+    {
+        ranged,
+        melee,
+        rune,
+        cone,
+        self,
+        orbit,
+        laser
+    }
     [Header("Spell Type")]
-    [SerializeField] bool isRanged;
-    [SerializeField] bool isMeleee;
-    [SerializeField] bool isRune;
-    [SerializeField] bool isCone;
-    [SerializeField] bool isSelf;
-    [SerializeField] bool isOrbit;
-    [SerializeField] bool isLaser;
+    public spellType sp;
 
     [Header("Spell Values")]
     public GameObject spell;
     public ActualSpell actualSpell;
     public PlayerMana playerMana;
-    public int manaCost;
-    public int pierce;
-    public int ammount;
-    public float speed;
-    public int damage;
-    public float knockBack;
-    public float atkCooldown;
-    public float currentAtkCooldown;
-    public int poisonDmg;
-    public int slowFactor;
+    public int manaCost = 5, pierce = 1, dmg = 3, poisonDmg = 0, slowFactor = 0, ammount;
+    public float speed = 7, knockback, atkCdwn, currentAtkCdwn;
 
     [Header("Ailments Applied")]
-    public bool appliesSpeed;
-    public bool appliesSlowness;
-    public bool appliesPoison;
-    public bool explodes;
+    public bool appliesSpeed = false, appliesSlowness = false, appliesPoison = false, explodes = false;
 
     [Header("Keys")]
     public KeyCode atkKey;
@@ -41,28 +31,10 @@ public class Spell : MonoBehaviour
     [Header("References")]
     public GameObject aim;
     public SpellItem spellItem;
-    SpellItem itemOne;
-    SpellItem itemTwo;
-    SpellItem itemThree;
-    SpellItem itemFour;
-    SpellItem itemFive;
-    SpellItem itemSix;
-    SpellItem itemSeven;
-    SpellItem itemEight;
+    SpellItem itemOne, itemTwo, itemThree, itemFour, itemFive, itemSix, itemSeven, itemEight;
 
     private void Start()
     {
-        manaCost = 5;
-        pierce = 1;
-        speed = 7;
-        damage = 3;
-        atkCooldown = 0.5f;
-        appliesPoison = false;
-        appliesSlowness = false;
-        explodes = false;
-        poisonDmg = 0;
-        slowFactor = 0;
-
         if (InventoryManager.Instance.Items.Count >= 1) itemOne = InventoryManager.Instance.Items[0];
         else
         {
@@ -111,20 +83,20 @@ public class Spell : MonoBehaviour
             itemEight = InventoryManager.Instance.Items[7];
         }
 
-        manaCost += itemOne.addedMana + itemTwo.addedMana + itemThree.addedMana + itemFour.addedMana + itemFive.addedMana + itemSix.addedMana + itemSeven.addedMana + itemEight.addedMana;
-        atkCooldown += itemOne.addedCooldown + itemTwo.addedCooldown + itemThree.addedCooldown + itemFour.addedCooldown + itemFive.addedCooldown + itemSix.addedCooldown + itemSeven.addedCooldown + itemEight.addedCooldown;
+        manaCost = InventoryManager.Instance.manaSum;
+        atkCdwn = InventoryManager.Instance.cdwnSum;
         if (itemOne.id == 4 || itemTwo.id == 4 || itemThree.id == 4 || itemFour.id == 4 || itemFive.id == 4 || itemSix.id == 4 || itemSeven.id == 4 || itemEight.id == 4) explodes = true;
         if (itemOne.id == 2 || itemTwo.id == 2 || itemThree.id == 2 || itemFour.id == 2 || itemFive.id == 2 || itemSix.id == 2 || itemSeven.id == 2 || itemEight.id == 2) appliesSlowness = true;
         if (itemOne.id == 3 || itemTwo.id == 3 || itemThree.id == 3 || itemFour.id == 3 || itemFive.id == 3 || itemSix.id == 3 || itemSeven.id == 3 || itemEight.id == 3) appliesPoison = true;
 
-        if (itemOne.id == 1) damage += itemOne.value;
-        if (itemTwo.id == 1) damage += itemTwo.value;
-        if (itemThree.id == 1) damage += itemThree.value;
-        if (itemFour.id == 1) damage += itemFour.value;
-        if (itemFive.id == 1) damage += itemFive.value;
-        if (itemSix.id == 1) damage += itemSix.value;
-        if (itemSeven.id == 1) damage += itemSeven.value;
-        if (itemEight.id == 1) damage += itemEight.value;
+        if (itemOne.id == 1) dmg += itemOne.value;
+        if (itemTwo.id == 1) dmg += itemTwo.value;
+        if (itemThree.id == 1) dmg += itemThree.value;
+        if (itemFour.id == 1) dmg += itemFour.value;
+        if (itemFive.id == 1) dmg += itemFive.value;
+        if (itemSix.id == 1) dmg += itemSix.value;
+        if (itemSeven.id == 1) dmg += itemSeven.value;
+        if (itemEight.id == 1) dmg += itemEight.value;
 
         if (itemOne.id == 2) slowFactor += itemOne.value;
         if (itemTwo.id == 2) slowFactor += itemTwo.value;
@@ -164,9 +136,9 @@ public class Spell : MonoBehaviour
 
         actualSpell = spell.GetComponent<ActualSpell>();
         actualSpell.pierce = pierce;
-        actualSpell.damage = damage;
+        actualSpell.damage = dmg;
         actualSpell.speed = speed;
-        actualSpell.knockBack = knockBack;
+        actualSpell.knockBack = knockback;
         actualSpell.appliesSpeed = appliesSpeed;
         actualSpell.appliesPoison = appliesPoison;
         actualSpell.appliesSlowness = appliesSlowness;
@@ -176,26 +148,24 @@ public class Spell : MonoBehaviour
     }
     private void Update()
     {
-        if (currentAtkCooldown > 0) currentAtkCooldown -= Time.deltaTime;
+        if (currentAtkCdwn > 0) currentAtkCdwn -= Time.deltaTime;
 
-        if (Input.GetKeyDown(atkKey) && currentAtkCooldown <= 0 && playerMana.mana >= manaCost)
+        if (Input.GetKeyDown(atkKey) && currentAtkCdwn <= 0 && playerMana.mana >= manaCost)
         {
             playerMana.ManaLose(manaCost);
-            if (isRanged || isMeleee || isCone || isOrbit || isLaser)
-            {
-                Instantiate(spell, aim.transform.position, aim.transform.rotation);
-            }
-            if (isSelf)
+            
+            if (sp == spellType.self)
             {
 
             }
-            if (isRune)
+            else if (sp == spellType.rune)
             {
                 Vector3 mousePosition = Input.mousePosition;
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
                 Instantiate(spell, mousePosition, Quaternion.Euler(0, 0, 0));
             }
-            currentAtkCooldown = atkCooldown;
+            else Instantiate(spell, aim.transform.position, aim.transform.rotation);
+            currentAtkCdwn = atkCdwn;
         }
     }
 }
