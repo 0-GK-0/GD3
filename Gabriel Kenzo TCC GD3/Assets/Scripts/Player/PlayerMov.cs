@@ -15,22 +15,13 @@ public class PlayerMov : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator anim;
 
-    /*[Header("Breadcrumbs")]
-    public float timeBetweenCrumbs;
-    public float maxTimeBetweenCrumbs;
-    public GameObject crumb;*/
-
     void Update()
     {
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-
-        rb.linearVelocity = direction * movSpeed;
+        rb.linearVelocity = new Vector2(direction.x * movSpeed, direction.y * movSpeed);
 
         GetAnimation();
         SpriteFlip();
-
-        /*timeBetweenCrumbs -= Time.deltaTime;
-        if (timeBetweenCrumbs <= 0) Instantiate(crumb, transform.position, transform.rotation);*/
     }
     void SpriteFlip()
     {
