@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour
@@ -9,11 +10,11 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private GameObject atk;
     [SerializeField] private float atkCdwn;
     [SerializeField] private float currentAtkCdwn;
+    private bool attacking;
+    private bool canAtk;
 
     [Header("Movement")]
-    public float pursuitRange;
-    public float startRunRange;
-    public float maxRunRange;
+    public float pursuitRange, runRange;
     private float distance;
     Vector2 direction;
 
@@ -24,7 +25,7 @@ public class RangedEnemy : MonoBehaviour
     private GameObject player;
     [SerializeField] private EnemyHealth eHealth;
     [SerializeField] private Animator anim;
-    [SerializeField] private string atkAnim;
+    [SerializeField] private string atkAnim, idleAnim;
 
     private void Start()
     {
@@ -32,33 +33,49 @@ public class RangedEnemy : MonoBehaviour
     }
     private void Update()
     {
-        if(currentAtkCdwn > 0)
-        {
-            currentAtkCdwn -= Time.deltaTime;
-            ResetAtk();
-        }
-        else
-        {
-            currentAtkCdwn = atkCdwn;
-            anim.Play(atkAnim);
-            if(distance <= maxRunRange) Instantiate(atk, projInstPoint.position, projInstPoint.rotation);
-        }
+        if(eHealth.hp <= 0) return;
 
+        //Attack
+        if(currentAtkCdwn > 0) currentAtkCdwn -= Time.deltaTime;
+        else if (!attacking && canAtk) StartCoroutine(AtkCoroutine());
+        ResetAtk();
+
+        //Movement
         distance = Vector2.Distance(transform.position, player.transform.position);
         direction = player.transform.position - transform.position;
         direction.Normalize();
 
-        if (distance <= pursuitRange) rb.linearVelocity = direction * speed;
-        else if (distance >= startRunRange && distance <= maxRunRange) rb.linearVelocity = direction * (-speed);
-        else rb.linearVelocity = Vector2.zero;
+        if(distance <= pursuitRange)
+        {
+            canAtk = true;
+            if (distance <= pursuitRange && distance >= runRange + 1.5f) rb.linearVelocity = direction * speed;
+            else if (distance <= runRange) rb.linearVelocity = direction * (-speed);
+        }
+        else
+        {
+            canAtk = false;
+            rb.linearVelocity = Vector2.zero;
+            if(!attacking) anim.Play(idleAnim);
+        }
     }
 
     public void ResetAtk()
     {
         if (eHealth.reset)
         {
+            StopAllCoroutines();
+            attacking = false;
             currentAtkCdwn = atkCdwn;
-            anim.Play(atkAnim);
         }
+    }
+
+    public IEnumerator AtkCoroutine()
+    {
+        attacking = true;
+        anim.Play(atkAnim);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        Instantiate(atk, projInstPoint.position, projInstPoint.rotation);
+        attacking = false;
+        currentAtkCdwn = atkCdwn;
     }
 }

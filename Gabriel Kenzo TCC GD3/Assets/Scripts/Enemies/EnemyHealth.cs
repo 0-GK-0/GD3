@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
     public int hp;
     [SerializeField] private Animator anim;
     [SerializeField] private string baseAnim;
-    [SerializeField] private const string hitAnim = "Hit";
+    [SerializeField] private string hitAnim = "Hit";
     
     public bool reset;
 

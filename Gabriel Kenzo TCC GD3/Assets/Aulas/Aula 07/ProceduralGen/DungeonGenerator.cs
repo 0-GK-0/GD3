@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
+    [Header("Rooms")]
     public GameObject roomPrefab;
     public int roomAmmount;
     public float roomDist;
 
     private List<Vector2> usedPos = new List<Vector2>();
     private Vector2 currentPos;
+
+    [Header("Walls")]
+    [SerializeField] private GameObject wallW, wallS, wallA, wallD, doorW, doorS, doorA, doorD;
 
     private void Start()
     {
@@ -38,6 +42,25 @@ public class DungeonGenerator : MonoBehaviour
         {
             Instantiate(roomPrefab, newPos, Quaternion.identity);
             usedPos.Add(newPos);
+            switch(direction)
+            {
+                case 0:
+                Instantiate(doorW, currentPos, Quaternion.identity);
+                Instantiate(doorS, newPos, Quaternion.identity);
+                break;
+                case 1:
+                Instantiate(doorS, currentPos, Quaternion.identity);
+                Instantiate(doorW, newPos, Quaternion.identity);
+                break;
+                case 2:
+                Instantiate(doorA, currentPos, Quaternion.identity);
+                Instantiate(doorD, newPos, Quaternion.identity);
+                break;
+                case 3:
+                Instantiate(doorD, currentPos, Quaternion.identity);
+                Instantiate(doorA, newPos, Quaternion.identity);
+                break;
+            }
             currentPos = newPos;
         }
     }
