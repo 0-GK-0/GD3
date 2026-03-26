@@ -13,6 +13,7 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Walls")]
     [SerializeField] private GameObject wallW, wallS, wallA, wallD, doorW, doorS, doorA, doorD;
+    private string doors;
 
     private void Start()
     {
@@ -47,18 +48,22 @@ public class DungeonGenerator : MonoBehaviour
                 case 0:
                 Instantiate(doorW, currentPos, Quaternion.identity);
                 Instantiate(doorS, newPos, Quaternion.identity);
+                doors += "s";
                 break;
                 case 1:
                 Instantiate(doorS, currentPos, Quaternion.identity);
                 Instantiate(doorW, newPos, Quaternion.identity);
+                doors += "w";
                 break;
                 case 2:
                 Instantiate(doorA, currentPos, Quaternion.identity);
                 Instantiate(doorD, newPos, Quaternion.identity);
+                doors += "d";
                 break;
                 case 3:
                 Instantiate(doorD, currentPos, Quaternion.identity);
                 Instantiate(doorA, newPos, Quaternion.identity);
+                doors += "a";
                 break;
             }
             currentPos = newPos;

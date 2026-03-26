@@ -48,8 +48,13 @@ public class RangedEnemy : MonoBehaviour
         if(distance <= pursuitRange)
         {
             canAtk = true;
-            if (distance <= pursuitRange && distance >= runRange + 1.5f) rb.linearVelocity = direction * speed;
+            if (distance <= pursuitRange && distance >= runRange + 2f) rb.linearVelocity = direction * speed;
             else if (distance <= runRange) rb.linearVelocity = direction * (-speed);
+            else
+            {
+                rb.linearVelocity = Vector2.zero;
+                if(!attacking) anim.Play(idleAnim);
+            }
         }
         else
         {
@@ -73,7 +78,7 @@ public class RangedEnemy : MonoBehaviour
     {
         attacking = true;
         anim.Play(atkAnim);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(1.1f);
         Instantiate(atk, projInstPoint.position, projInstPoint.rotation);
         attacking = false;
         currentAtkCdwn = atkCdwn;
