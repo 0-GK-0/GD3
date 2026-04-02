@@ -13,7 +13,6 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Walls")]
     [SerializeField] private GameObject wallW, wallS, wallA, wallD, doorW, doorS, doorA, doorD;
-    private string doors;
 
     private void Start()
     {
@@ -34,38 +33,39 @@ public class DungeonGenerator : MonoBehaviour
 
         switch(direction)
         {
-            case 0: newPos += Vector2.up * roomDist; break;
-            case 1: newPos += Vector2.down * roomDist; break;
-            case 2: newPos += Vector2.left * roomDist; break;
-            case 3: newPos += Vector2.right * roomDist; break;
+            case 0: newPos += Vector2.up * roomDist;
+            if(newPos != usedPos[0]){
+                Instantiate(doorW, currentPos, Quaternion.identity);
+                Instantiate(doorS, newPos, Quaternion.identity);
+            }
+            break;
+            case 1: newPos += Vector2.down * roomDist;
+            if(newPos != usedPos[0]){
+                Instantiate(doorS, currentPos, Quaternion.identity);
+                Instantiate(doorW, newPos, Quaternion.identity);
+            }
+            break;
+            case 2: newPos += Vector2.left * roomDist;
+            if(newPos != usedPos[0]){
+                Instantiate(doorA, currentPos, Quaternion.identity);
+                Instantiate(doorD, newPos, Quaternion.identity);
+            }
+            break;
+            case 3: newPos += Vector2.right * roomDist;
+            if(newPos != usedPos[0]){
+                Instantiate(doorD, currentPos, Quaternion.identity);
+                Instantiate(doorA, newPos, Quaternion.identity);
+            }
+            break;
         }
         if (!usedPos.Contains(newPos))
         {
             Instantiate(roomPrefab, newPos, Quaternion.identity);
+            Instantiate(wallW, newPos, Quaternion.identity);
+            Instantiate(wallS, newPos, Quaternion.identity);
+            Instantiate(wallA, newPos, Quaternion.identity);
+            Instantiate(wallD, newPos, Quaternion.identity);
             usedPos.Add(newPos);
-            switch(direction)
-            {
-                case 0:
-                Instantiate(doorW, currentPos, Quaternion.identity);
-                Instantiate(doorS, newPos, Quaternion.identity);
-                doors += "s";
-                break;
-                case 1:
-                Instantiate(doorS, currentPos, Quaternion.identity);
-                Instantiate(doorW, newPos, Quaternion.identity);
-                doors += "w";
-                break;
-                case 2:
-                Instantiate(doorA, currentPos, Quaternion.identity);
-                Instantiate(doorD, newPos, Quaternion.identity);
-                doors += "d";
-                break;
-                case 3:
-                Instantiate(doorD, currentPos, Quaternion.identity);
-                Instantiate(doorA, newPos, Quaternion.identity);
-                doors += "a";
-                break;
-            }
             currentPos = newPos;
         }
     }
