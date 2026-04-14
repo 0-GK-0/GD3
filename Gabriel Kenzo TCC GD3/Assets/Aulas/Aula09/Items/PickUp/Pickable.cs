@@ -3,7 +3,7 @@ using UnityEngine;
 public class Pickable : MonoBehaviour
 {
     [SerializeField] private GameObject pickText;
-    public KeyCode pickKey;
+    public KeyCode pickKey = KeyCode.E;
     public GameObject item;
     private bool isInside;
 

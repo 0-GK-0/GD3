@@ -28,6 +28,10 @@ public class BasicEnemy : MonoBehaviour
     public PlayerHealth playerHealth;
     private GameObject[] crumb;
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
     void Update()
     {
         //crumb = GameObject.FindGameObjectsWithTag("Crumbs");

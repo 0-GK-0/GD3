@@ -8,7 +8,9 @@ public class Chest : MonoBehaviour
     public KeyCode openKey;
     public int item;
     public List<GameObject> possibleItems;
-    [SerializeField] private Transform itemInstPoint;
+    //[SerializeField] private Transform itemInstPoint;
+    public int minItems;
+    public int maxItems;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -17,9 +19,14 @@ public class Chest : MonoBehaviour
             openTxt.SetActive(true);
             if (Input.GetKeyDown(openKey))
             {
-                item = Random.Range(0, possibleItems.Count);
-                Instantiate(possibleItems[item], itemInstPoint.position, Quaternion.identity);
-
+                int nItems = Random.Range(minItems, maxItems + 1);
+                for(int i = 0; i < nItems; i++)
+                {
+                    item = Random.Range(0, possibleItems.Count);
+                    //Instantiate(possibleItems[item], itemInstPoint.position, Quaternion.identity);
+                    collision.gameObject.GetComponent<PlayerItems>().items.Add(possibleItems[item]);
+                }
+                
                 Instantiate(openChest, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
