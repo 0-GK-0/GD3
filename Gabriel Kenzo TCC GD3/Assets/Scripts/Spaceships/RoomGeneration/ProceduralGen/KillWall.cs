@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class KillWall : MonoBehaviour
 {
+    [SerializeField] private string tagToDie;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("DoorWall"))
@@ -15,6 +16,6 @@ public class KillWall : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("A");
+        //Debug.Log("A");
     }
 }
