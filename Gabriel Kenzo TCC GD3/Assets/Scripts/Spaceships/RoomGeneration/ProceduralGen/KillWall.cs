@@ -5,7 +5,7 @@ public class KillWall : MonoBehaviour
     [SerializeField] private string tagToDie;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DoorWall"))
+        if (collision.gameObject.CompareTag(tagToDie))
         {
             Destroy(gameObject);
         }

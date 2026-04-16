@@ -751,6 +751,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd4a55b1e1be78408d76a426faf1286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonGenerator
+  roomPrefab: {fileID: 0}
+  roomAmmount: 0
+  roomDist: 0
+  wallW: {fileID: 0}
+  wallS: {fileID: 0}
+  wallA: {fileID: 0}
+  wallD: {fileID: 0}
+  doorW: {fileID: 0}
+  doorS: {fileID: 0}
+  doorA: {fileID: 0}
+  doorD: {fileID: 0}
 --- !u!4 &1379231471
 Transform:
   m_ObjectHideFlags: 0
