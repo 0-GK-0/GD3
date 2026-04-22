@@ -1,35 +1,40 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [field: Header("Health")]
     public int hp;
     public int maxHp = 100;
+
+    [field: Header("Invincibility Frame")]
+    public float invFrame;
+    public float maxInvFrame;
+    [SerializeField] private SpriteRenderer _playerRender;
+
+    [field: Header("Healing")]
     public int healingFactor;
     public float timeToHeal;
     public float timeToHealAfterDmg;
-    public float timeLeftToHeal;
-    public Image hpBar;
-    public Image hpSpentBar;
-    public SwitchScene switchScene;
-    public string currentScene;
+    private float _timeLeftToHeal;
 
-    public float invFrame;
-    public float maxInvFrame;
+    [field: Header("UI")]
+    [field: SerializeField] public Image hpBar {get; private set;}
+    [field: SerializeField] public Image hpSpentBar {get; private set;}
+    [SerializeField] private float _lerpSpeed = 0.05f;
 
-    [SerializeField] private float lerpSpeed = 0.05f;
 
-    [SerializeField] private SpriteRenderer playerRender;
+    [field: Header("Scene Switching")]
+    [field:SerializeField] public SwitchScene switchScene {get; private set;}
+    private string _currentScene;
 
-    void Start()
+    private void Start()
     {
         hp = maxHp;
-        timeLeftToHeal = timeToHeal;
     }
 
-    void Update()
+    private void Update()
     {
         if(invFrame > 0) invFrame -= Time.deltaTime;
 
@@ -39,49 +44,46 @@ public class PlayerHealth : MonoBehaviour
             Dmg(10);
         }
 
-        if (hpBar.fillAmount != (float)hp / (float)maxHp)
-        {
-            hpBar.fillAmount = (float)hp / (float)maxHp;
-        }
-        if (hpSpentBar.fillAmount != hpBar.fillAmount)
-        {
-            hpSpentBar.fillAmount = Mathf.Lerp(hpSpentBar.fillAmount, (float)hp / 100, lerpSpeed);
-        }
+        //HpBar
+        if (hpBar.fillAmount != (float)hp / (float)maxHp) hpBar.fillAmount = (float)hp / (float)maxHp;
+        if (hpSpentBar.fillAmount != hpBar.fillAmount) hpSpentBar.fillAmount = Mathf.Lerp(hpSpentBar.fillAmount, (float)hp / 100, _lerpSpeed);
 
-        if (hp <= 0) switchScene.LoadScene(currentScene);
+        //Death
+        if (hp <= 0) switchScene.LoadScene(_currentScene);
     }
 
-    public void NaturalHeal()
+    private  void NaturalHeal()
     {
         if (hp < maxHp)
         {
-            timeLeftToHeal -= Time.deltaTime;
-            if (timeLeftToHeal <= 0)
-            {
-                Heal(healingFactor);
-            }
+            _timeLeftToHeal -= Time.deltaTime;
+            
+            if (_timeLeftToHeal <= 0) Heal(healingFactor);
         }
     }
 
     public void Heal(int heal)
     {
-        if (hp + heal >= maxHp) hp = maxHp;
-        else hp += heal;
-        timeLeftToHeal = timeToHeal;
+        if (hp + heal < maxHp) hp += heal;
+        else hp = maxHp;
+
+        _timeLeftToHeal = timeToHeal;
     }
 
     public void Dmg(int damage)
     {
         hp -= damage;
-        timeLeftToHeal = timeToHealAfterDmg;
+        _timeLeftToHeal = timeToHealAfterDmg;
+
         invFrame = maxInvFrame;
         StartCoroutine(RedFlash());
     }
 
+    //Flash red when hit
     private IEnumerator RedFlash()
     {
-        playerRender.color = Color.red;
+        _playerRender.color = Color.red;
         yield return new WaitForSeconds(maxInvFrame);
-        playerRender.color = Color.white;
+        _playerRender.color = Color.white;
     }
 }

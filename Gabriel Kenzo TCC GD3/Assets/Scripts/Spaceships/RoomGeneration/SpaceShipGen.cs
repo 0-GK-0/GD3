@@ -95,7 +95,7 @@ public class SpaceShipGen : MonoBehaviour
                         currentPos = nextPos;
                         break;
                     case -1:
-                        if(usedPos.Count > 1) currentPos = usedPos[usedPos.Count-2];
+                        if(usedPos.Count > 1) currentPos = usedPos[usedPos.Count-3];
                         else roomPos.Clear();
                         break;
                     case 0:

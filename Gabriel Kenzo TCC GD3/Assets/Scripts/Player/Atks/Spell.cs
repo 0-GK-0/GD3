@@ -2,23 +2,13 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-    public enum spellType
-    {
-        ranged,
-        melee,
-        rune,
-        cone,
-        self,
-        orbit,
-        laser
-    }
-    [Header("Spell Type")]
-    public spellType sp;
+    [field: Header("Spell Type")]
+    [field: SerializeField] public SpellType sp {get; private set;}
 
-    [Header("Spell Values")]
-    public GameObject spell;
-    public ActualSpell actualSpell;
-    public PlayerMana playerMana;
+    [field: Header("Spell Values")]
+    [field: SerializeField] public GameObject spell {get; private set;}
+    [SerializeField] private ActualSpell actualSpell;
+    [SerializeField] private PlayerMana playerMana;
     public int manaCost = 5, pierce = 1, dmg = 3, poisonDmg = 0, slowFactor = 0, ammount;
     public float speed = 7, knockback, atkCdwn, currentAtkCdwn;
 
@@ -29,7 +19,7 @@ public class Spell : MonoBehaviour
     public KeyCode atkKey;
 
     [Header("References")]
-    public GameObject aim;
+    [SerializeField] private GameObject aim;
     public SpellItem spellItem;
     SpellItem itemOne, itemTwo, itemThree, itemFour, itemFive, itemSix, itemSeven, itemEight;
 
@@ -154,11 +144,11 @@ public class Spell : MonoBehaviour
         {
             playerMana.ManaLose(manaCost);
             
-            if (sp == spellType.self)
+            if (sp == SpellType.self)
             {
 
             }
-            else if (sp == spellType.rune)
+            else if (sp == SpellType.rune)
             {
                 Vector3 mousePosition = Input.mousePosition;
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);

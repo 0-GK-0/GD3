@@ -9,11 +9,11 @@ public class PlayerAtk : MonoBehaviour
 
     void Start()
     {
-        SelectWeapon();
+        //SelectWeapon();
     }
     void Update()
     {
-        int previousSelectedSpell = currentSpell;
+        /*int previousSelectedSpell = currentSpell;
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(rightSpellKey))
         {
@@ -24,14 +24,11 @@ public class PlayerAtk : MonoBehaviour
         {
             if (currentSpell <= 0) currentSpell = transform.childCount - 1;
             else currentSpell--;
-        }
+        }*/
 
-        if (previousSelectedSpell != currentSpell)
-        {
-            SelectWeapon();
-        }
+        //if (previousSelectedSpell != currentSpell) SelectWeapon();
     }
-    void SelectWeapon()
+    /*void SelectWeapon()
     {
         int i = 0;
         foreach (Transform spell in transform)
@@ -42,5 +39,5 @@ public class PlayerAtk : MonoBehaviour
                 spell.gameObject.SetActive(false);
             i++;
         }
-    }
+    }*/
 }
