@@ -20,7 +20,7 @@ public class Proj : MonoBehaviour
         {
             var playerHealth = other.GetComponent<PlayerHealth>();
             playerHealth.Dmg(dmg);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }

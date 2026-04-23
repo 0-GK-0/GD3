@@ -4571,49 +4571,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: mana
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: manaBar
-      value: 
-      objectReference: {fileID: 1129904889}
-    - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: maxMana
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: noManaText
       value: 
       objectReference: {fileID: 2137831502}
-    - target: {fileID: 219737323094646567, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: manaSpentBar
-      value: 
-      objectReference: {fileID: 1618278368}
-    - target: {fileID: 1047765272494108683, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047765272494108683, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
-    - target: {fileID: 2728297204919793908, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728297204919793908, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
-    - target: {fileID: 2939208963484005950, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2939208963484005950, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
     - target: {fileID: 3577653060323941106, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.83
@@ -4654,90 +4614,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5109882988601474315, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5109882988601474315, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5109882988601474315, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373926489701892126, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373926489701892126, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
-    - target: {fileID: 7218002425022495388, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7218002425022495388, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
-    - target: {fileID: 7339400474188739896, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339400474188739896, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
-    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: hpBar
-      value: 
-      objectReference: {fileID: 724826443}
-    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: invFrame
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: hpSpentBar
-      value: 
-      objectReference: {fileID: 1439168352}
-    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: maxInvFrame
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: switchScene
-      value: 
-      objectReference: {fileID: 402570177}
-    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: currentScene
-      value: SmolBoy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: playerRender
-      value: 
-      objectReference: {fileID: 1100542835}
     - target: {fileID: 8417108504297860259, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 9100287960515767223, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9100287960515767223, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
-    - target: {fileID: 9111326309857641055, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9111326309857641055, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-      propertyPath: spellItem
-      value: 
-      objectReference: {fileID: 11400000, guid: b5e69c8876f5080408b5c60c4f4b5d3c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6764,17 +6644,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a5af7e3f1c0674ba614be4e09b8e05, type: 3}
---- !u!114 &724826443 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7095392683095688206, guid: 8b95f21981b41f9479299ca043f5212c, type: 3}
-  m_PrefabInstance: {fileID: 1978018934}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &728085764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 110476515040917719, guid: 13dcfb19f66be234597cfc50f5cf7889, type: 3}
@@ -9764,11 +9633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3912765cf27f4ef43b25926a4957577a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &1100542835 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5109882988601474315, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
-  m_PrefabInstance: {fileID: 525860275}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1105856598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7192800328998704390, guid: d7a5af7e3f1c0674ba614be4e09b8e05, type: 3}
@@ -9974,17 +9838,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13dcfb19f66be234597cfc50f5cf7889, type: 3}
---- !u!114 &1129904889 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1280618389558766853, guid: 8b95f21981b41f9479299ca043f5212c, type: 3}
-  m_PrefabInstance: {fileID: 1978018934}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1129969935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12588,17 +12441,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a5af7e3f1c0674ba614be4e09b8e05, type: 3}
---- !u!114 &1439168352 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3058311219280208884, guid: 8b95f21981b41f9479299ca043f5212c, type: 3}
-  m_PrefabInstance: {fileID: 1978018934}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1439470304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14242,17 +14084,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a5af7e3f1c0674ba614be4e09b8e05, type: 3}
---- !u!114 &1618278368 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8946121597929050232, guid: 8b95f21981b41f9479299ca043f5212c, type: 3}
-  m_PrefabInstance: {fileID: 1978018934}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1620040164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8111883187292547032, guid: e043bbc5b928a3f48972dc024fbc0e21, type: 3}
@@ -19791,7 +19622,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 525860275}
   - {fileID: 2105870056}
-  - {fileID: 969501086}
   - {fileID: 926285276}
+  - {fileID: 969501086}
   - {fileID: 402570180}
   - {fileID: 1570419031}
