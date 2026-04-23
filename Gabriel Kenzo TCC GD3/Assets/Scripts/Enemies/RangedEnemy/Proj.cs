@@ -5,7 +5,12 @@ public class Proj : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float timeToDespawn;
     [SerializeField] private int dmg;
+    [SerializeField] private PlayerHealth playerHealth;
 
+    private void Start()
+    {
+        playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+    }
     private void Update()
     {
         timeToDespawn -= Time.deltaTime;
@@ -18,9 +23,8 @@ public class Proj : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            var playerHealth = other.GetComponent<PlayerHealth>();
             playerHealth.Dmg(dmg);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

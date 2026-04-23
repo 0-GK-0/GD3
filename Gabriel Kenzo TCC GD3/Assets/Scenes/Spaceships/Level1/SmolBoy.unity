@@ -4614,6 +4614,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: _playerRender
+      value: 
+      objectReference: {fileID: 1100542835}
     - target: {fileID: 8417108504297860259, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9633,6 +9637,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3912765cf27f4ef43b25926a4957577a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &1100542835 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5109882988601474315, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+  m_PrefabInstance: {fileID: 525860275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1105856598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7192800328998704390, guid: d7a5af7e3f1c0674ba614be4e09b8e05, type: 3}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14278350126651249a4eef3825271ecf, type: 3}
   m_Name: Harm
   m_EditorClassIdentifier: 
-  id: 1
-  itemname: Harm
-  value: 1
-  addedMana: 2
-  addedCooldown: 0.1
-  icon: {fileID: 7705179094006968495, guid: 15fc94425571de146b0c2da560f9688c, type: 3}
+  <id>k__BackingField: 1
+  <itemname>k__BackingField: Harm
+  <value>k__BackingField: 3
+  <addedMana>k__BackingField: 5
+  <addedCooldown>k__BackingField: 0.5
+  <icon>k__BackingField: {fileID: 7705179094006968495, guid: 15fc94425571de146b0c2da560f9688c, type: 3}

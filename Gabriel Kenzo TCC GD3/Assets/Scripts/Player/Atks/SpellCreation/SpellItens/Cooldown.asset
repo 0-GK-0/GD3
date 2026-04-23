@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14278350126651249a4eef3825271ecf, type: 3}
   m_Name: Cooldown
   m_EditorClassIdentifier: 
-  id: 7
-  itemname: Cooldown
-  value: 0
-  addedMana: 2
-  addedCooldown: -1
-  icon: {fileID: -86823174261610480, guid: 063aa0692b3f4e040b0a35a5ddbb4a56, type: 3}
+  <id>k__BackingField: 8
+  <itemname>k__BackingField: Cooldown
+  <value>k__BackingField: 1
+  <addedMana>k__BackingField: 5
+  <addedCooldown>k__BackingField: -0.5
+  <icon>k__BackingField: {fileID: -86823174261610480, guid: 063aa0692b3f4e040b0a35a5ddbb4a56, type: 3}

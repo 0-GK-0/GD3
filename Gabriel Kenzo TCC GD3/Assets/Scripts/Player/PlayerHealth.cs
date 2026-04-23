@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
     [field: Header("Scene Switching")]
     [field:SerializeField] public SwitchScene switchScene {get; private set;}
-    private string _currentScene;
+    [field:SerializeField] private string _currentScene;
 
     private void Start()
     {
@@ -44,15 +45,15 @@ public class PlayerHealth : MonoBehaviour
             Dmg(10);
         }
 
-        //HpBar
-        if (hpBar.fillAmount != (float)hp / (float)maxHp) hpBar.fillAmount = (float)hp / (float)maxHp;
-        if (hpSpentBar.fillAmount != hpBar.fillAmount) hpSpentBar.fillAmount = Mathf.Lerp(hpSpentBar.fillAmount, (float)hp / 100, _lerpSpeed);
-
         //Death
-        if (hp <= 0) switchScene.LoadScene(_currentScene);
+        if (hp <= 0) SceneManager.LoadScene(_currentScene);
+
+        //HpBar
+        //if (hpBar.fillAmount != (float)hp / (float)maxHp) hpBar.fillAmount = (float)hp / (float)maxHp;
+        //if (hpSpentBar.fillAmount != hpBar.fillAmount) hpSpentBar.fillAmount = Mathf.Lerp(hpSpentBar.fillAmount, (float)hp / 100, _lerpSpeed);
     }
 
-    private  void NaturalHeal()
+    private void NaturalHeal()
     {
         if (hp < maxHp)
         {

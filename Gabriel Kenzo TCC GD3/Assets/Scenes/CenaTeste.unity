@@ -273,6 +273,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7667538060714825086, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: orthographic size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: invFrame
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: _currentScene
+      value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930270407232025605, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: _playerRender
+      value: 
+      objectReference: {fileID: 592579884}
     - target: {fileID: 8417108504297860259, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -282,6 +298,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+--- !u!212 &592579884 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5109882988601474315, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+  m_PrefabInstance: {fileID: 592579883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &666079805
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14278350126651249a4eef3825271ecf, type: 3}
   m_Name: Explosion
   m_EditorClassIdentifier: 
-  id: 4
-  itemname: Explosion
-  value: 0
-  addedMana: 20
-  addedCooldown: 1.5
-  icon: {fileID: -1956210189126304359, guid: a557a7f30f4f8f340b4b46b532118af9, type: 3}
+  <id>k__BackingField: 4
+  <itemname>k__BackingField: Explosion
+  <value>k__BackingField: 5
+  <addedMana>k__BackingField: 15
+  <addedCooldown>k__BackingField: 1
+  <icon>k__BackingField: {fileID: -1956210189126304359, guid: a557a7f30f4f8f340b4b46b532118af9, type: 3}

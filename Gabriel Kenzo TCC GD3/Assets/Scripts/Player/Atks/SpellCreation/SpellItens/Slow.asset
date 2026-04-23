@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14278350126651249a4eef3825271ecf, type: 3}
   m_Name: Slow
   m_EditorClassIdentifier: 
-  id: 2
-  itemname: Slow
-  value: 2
-  addedMana: 2
-  addedCooldown: 0.2
-  icon: {fileID: -594003605574940282, guid: 107eb1da4ea1739489694c39a9b8a008, type: 3}
+  <id>k__BackingField: 2
+  <itemname>k__BackingField: Slow
+  <value>k__BackingField: 6
+  <addedMana>k__BackingField: 7
+  <addedCooldown>k__BackingField: 0.75
+  <icon>k__BackingField: {fileID: -594003605574940282, guid: 107eb1da4ea1739489694c39a9b8a008, type: 3}

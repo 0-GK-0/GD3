@@ -54,6 +54,7 @@ public class ActualSpell : MonoBehaviour
             if (explodes)
             {
                 Instantiate(explosion, transform.position, Quaternion.Euler(0, 0, 0));
+                Debug.Log("Explosion");
             }
             if (appliesSlowness)
             {

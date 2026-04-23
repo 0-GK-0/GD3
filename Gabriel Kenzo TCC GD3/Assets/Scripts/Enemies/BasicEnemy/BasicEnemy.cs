@@ -31,6 +31,7 @@ public class BasicEnemy : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
     void Update()
     {

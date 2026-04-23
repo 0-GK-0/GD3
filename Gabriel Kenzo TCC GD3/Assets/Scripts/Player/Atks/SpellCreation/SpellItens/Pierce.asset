@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14278350126651249a4eef3825271ecf, type: 3}
   m_Name: Pierce
   m_EditorClassIdentifier: 
-  id: 5
-  itemname: Pierce
-  value: 1
-  addedMana: 2
-  addedCooldown: 0.2
-  icon: {fileID: 5055325160713282708, guid: ab7cf723c22682a4fb4d5e061de10b4e, type: 3}
+  <id>k__BackingField: 5
+  <itemname>k__BackingField: Pierce
+  <value>k__BackingField: 3
+  <addedMana>k__BackingField: 5
+  <addedCooldown>k__BackingField: 0.5
+  <icon>k__BackingField: {fileID: 5055325160713282708, guid: ab7cf723c22682a4fb4d5e061de10b4e, type: 3}

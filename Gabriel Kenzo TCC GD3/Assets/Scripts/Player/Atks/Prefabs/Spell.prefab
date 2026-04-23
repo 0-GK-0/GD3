@@ -61,7 +61,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   basicEnemy: {fileID: 0}
   explosion: {fileID: 5643143688949261538, guid: 4f5419d54b010bb4894c261a06228280, type: 3}
-  explosionScr: {fileID: 0}
+  explosionScr: {fileID: 1387122342653930974, guid: 4f5419d54b010bb4894c261a06228280, type: 3}
 --- !u!58 &1669118919420865309
 CircleCollider2D:
   m_ObjectHideFlags: 0

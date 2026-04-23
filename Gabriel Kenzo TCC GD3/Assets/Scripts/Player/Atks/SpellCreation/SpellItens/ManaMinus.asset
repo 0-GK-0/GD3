@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14278350126651249a4eef3825271ecf, type: 3}
   m_Name: ManaMinus
   m_EditorClassIdentifier: 
-  id: 8
-  itemname: ManaMinus
-  value: 0
-  addedMana: -3
-  addedCooldown: 0.1
-  icon: {fileID: -3585626457156592818, guid: 76a6b895d2241a74fbd939d729bbb145, type: 3}
+  <id>k__BackingField: 7
+  <itemname>k__BackingField: Mana
+  <value>k__BackingField: 1
+  <addedMana>k__BackingField: -5
+  <addedCooldown>k__BackingField: 0.5
+  <icon>k__BackingField: {fileID: -3585626457156592818, guid: 76a6b895d2241a74fbd939d729bbb145, type: 3}

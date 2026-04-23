@@ -1,5 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class BaseEnemyAtk : MonoBehaviour
 {
@@ -15,6 +15,11 @@ public class BaseEnemyAtk : MonoBehaviour
     }
     private void Update()
     {
+        StartCoroutine(DestroyCoroutine());
+    }
+    private IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
 }

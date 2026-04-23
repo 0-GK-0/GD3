@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14278350126651249a4eef3825271ecf, type: 3}
   m_Name: Empty
   m_EditorClassIdentifier: 
-  id: 0
-  itemname: Empty
-  value: 0
-  addedMana: 0
-  addedCooldown: 0
-  icon: {fileID: 6387814494005134345, guid: c4e37777eb3d22f4182bd3df4ece2c31, type: 3}
+  <id>k__BackingField: 0
+  <itemname>k__BackingField: Empty
+  <value>k__BackingField: 0
+  <addedMana>k__BackingField: 0
+  <addedCooldown>k__BackingField: 0
+  <icon>k__BackingField: {fileID: 6387814494005134345, guid: c4e37777eb3d22f4182bd3df4ece2c31, type: 3}
