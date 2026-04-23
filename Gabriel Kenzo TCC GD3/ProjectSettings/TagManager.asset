@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - DoorWall
+  - Enemy
+  - DoorW
+  - DoorA
+  - DoorS
+  - DoorD
+  - enemySpawner
   layers:
   - Default
   - TransparentFX

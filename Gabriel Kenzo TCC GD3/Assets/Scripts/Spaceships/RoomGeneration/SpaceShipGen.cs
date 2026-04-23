@@ -19,13 +19,18 @@ public class SpaceShipGen : MonoBehaviour
     [SerializeField] private List<Vector2> borderRoomPos;
     [SerializeField] private GameObject doorW, doorA, doorS, doorD;
     float timer = 40f;
+    private List<Vector2> usedPos = new List<Vector2>();
 
+    [Header("Room Chooser")]
+    [SerializeField] private SpaceShipRoomChooser roomChooser;
 
     private void Start()
     {
         SpawnGrid();
         GenerateDoors();
+        roomChooser.ListRooms(usedPos);
     }
+    //Grid
     private void SpawnGrid()
     {
         for(int x = 0; x < gridX; x++)
@@ -53,57 +58,67 @@ public class SpaceShipGen : MonoBehaviour
         var d =Instantiate(wallD, spawnPos, spawnRot);
     }
 
+    //Doors
     private void GenerateDoors()
     {
         Vector2 startingPos = GetRandomBorderRoom();
         Vector2 currentPos = startingPos;
-        List<Vector2> usedPos = new List<Vector2>();
+        Vector2 previousPos = Vector2.zero;
+
         while (roomPos.Count > 0){
             if(timer > 0)
             {
                 if(roomPos.Contains(currentPos))
                 {
                     roomPos.Remove(currentPos);
-                    usedPos.Add(currentPos);
+                    if(usedPos.Contains(previousPos)) usedPos.Insert(usedPos.IndexOf(previousPos)+1, currentPos);
+                    else usedPos.Add(currentPos);
                 }
-                Vector3 nextPosAndDir = ChooseNeighbour(currentPos);
-                Vector2 nextPos = new Vector2(nextPosAndDir.x, nextPosAndDir.y);
-                float dir = nextPosAndDir.z;
-                Debug.Log(currentPos);
-                Debug.Log(nextPosAndDir);
+
+                Vector3 neighbour = ChooseNeighbour(currentPos);
+                float dir = neighbour.z;
+                Vector2 nextPos = new Vector2(neighbour.x, neighbour.y);
+
+                /*Debug.Log(currentPos);
                 Debug.Log(dir);
+                Debug.Log(nextPos);*/
+
                 switch (dir)
                 {
                     case 1:
                         Instantiate(doorW, currentPos, Quaternion.identity);
                         Instantiate(doorS, nextPos, Quaternion.identity);
+                        previousPos = currentPos;
                         currentPos = nextPos;
                         break;
                     case 2:
                         Instantiate(doorA, currentPos, Quaternion.identity);
                         Instantiate(doorD, nextPos, Quaternion.identity);
+                        previousPos = currentPos;
                         currentPos = nextPos;
                         break;
                     case 3:
                         Instantiate(doorS, currentPos, Quaternion.identity);
                         Instantiate(doorW, nextPos, Quaternion.identity);
-                            currentPos = nextPos;
+                        previousPos = currentPos;
+                        currentPos = nextPos;
                         break;
                     case 4:
                         Instantiate(doorD, currentPos, Quaternion.identity);
                         Instantiate(doorA, nextPos, Quaternion.identity);
+                        previousPos = currentPos;
                         currentPos = nextPos;
                         break;
                     case -1:
-                        if(usedPos.Count > 1) currentPos = usedPos[usedPos.Count-3];
+                        if(usedPos.Count > 1)
+                        {
+                            currentPos = usedPos[usedPos.IndexOf(currentPos)-1];
+                            previousPos = currentPos;
+                        }
                         else roomPos.Clear();
                         break;
-                    case 0:
-                        Debug.Log("Error");
-                        roomPos.Clear();
-                        break;
                 }
-                timer -= 1;
+                //timer -= 1;
             }
             else roomPos.Clear();
         }
@@ -122,34 +137,37 @@ public class SpaceShipGen : MonoBehaviour
         Vector2 neighbourD = new Vector2(pos.x + gridSpacingOffset, pos.y);
 
         List<Vector2> possibleNeighbours = new List<Vector2>();
+        List<int> dir = new List<int>();
 
         if (roomPos.Contains(neighbourW))
+        {
             possibleNeighbours.Add(neighbourW);
+            dir.Add(1);
+        }
         if (roomPos.Contains(neighbourA))
+        {
             possibleNeighbours.Add(neighbourA);
+            dir.Add(2);
+        }
         if (roomPos.Contains(neighbourS))
+        {
             possibleNeighbours.Add(neighbourS);
+            dir.Add(3);
+        }
         if (roomPos.Contains(neighbourD))
+        {
             possibleNeighbours.Add(neighbourD);
-        
-        Debug.Log(possibleNeighbours);
+            dir.Add(4);
+        }
 
         if(possibleNeighbours.Count > 0)
         {
             int randomNeighbour = Random.Range(0, possibleNeighbours.Count);
-            return new Vector3(possibleNeighbours[randomNeighbour].x, possibleNeighbours[randomNeighbour].y, NeighbourDir(pos, possibleNeighbours[randomNeighbour]));
+            return new Vector3(possibleNeighbours[randomNeighbour].x, possibleNeighbours[randomNeighbour].y, dir[randomNeighbour]);
         }
         else
         {
             return new Vector3(0, 0, -1);
         }
-    }
-    private int NeighbourDir (Vector2 pos, Vector2 newPos){
-        Debug.Log(pos - newPos);
-        if(pos - newPos == new Vector2(0, -gridSpacingOffset)) return 1;
-        else if(pos - newPos == new Vector2(gridSpacingOffset, 0)) return 2;
-        else if(pos - newPos == new Vector2(0, gridSpacingOffset)) return 3;
-        else if(pos - newPos == new Vector2(-gridSpacingOffset, 0)) return 4;
-        else return 0;
     }
 }
