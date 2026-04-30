@@ -49,8 +49,8 @@ public class PlayerHealth : MonoBehaviour
         if (hp <= 0) SceneManager.LoadScene(_currentScene);
 
         //HpBar
-        //if (hpBar.fillAmount != (float)hp / (float)maxHp) hpBar.fillAmount = (float)hp / (float)maxHp;
-        //if (hpSpentBar.fillAmount != hpBar.fillAmount) hpSpentBar.fillAmount = Mathf.Lerp(hpSpentBar.fillAmount, (float)hp / 100, _lerpSpeed);
+        if (hpBar.fillAmount != (float)hp / (float)maxHp) hpBar.fillAmount = (float)hp / (float)maxHp;
+        if (hpSpentBar.fillAmount != hpBar.fillAmount) hpSpentBar.fillAmount = Mathf.Lerp(hpSpentBar.fillAmount, (float)hp / 100, _lerpSpeed);
     }
 
     private void NaturalHeal()

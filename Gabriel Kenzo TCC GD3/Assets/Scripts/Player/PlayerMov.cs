@@ -18,6 +18,12 @@ public class PlayerMov : MonoBehaviour
         //Move
         _direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         rb.linearVelocity = _direction * moveSpeed;
+        
+        if(_direction != Vector2.zero)
+        {
+            anim.SetFloat("moveX", Mathf.Abs(_direction.x));
+            anim.SetFloat("moveY", _direction.y);
+        }
 
         GetAnimation();
         SpriteFlip();
@@ -44,5 +50,6 @@ public class PlayerMov : MonoBehaviour
             }
             else anim.Play("PlayerWalkS");
         }
+        else anim.Play("PlayerIdle");
     }
 }
