@@ -134,21 +134,29 @@ public class SpaceShipRoomChooser : MonoBehaviour
             returnValue.Add(new Vector3(possibleNeighbours[i].x, possibleNeighbours[i].y, dir[i]));
         }
 
+        Debug.Log("Working. Count: " + returnValue.Count);
         return returnValue;
     }
     private List<Vector2> AvailableRoomsList(bool checkCorners, int crossCheck)
     {
-        List<Vector2> possibleRooms = unusedRooms;
+        List<Vector2> possibleRooms = new List<Vector2>(unusedRooms);
 
         List<Vector3> startingNeighbours = CheckNeigbours(unusedRooms, 0, checkCorners, unusedRooms, crossCheck);
         for (int i = 0; i < startingNeighbours.Count; i++)
         {
-            possibleRooms.Remove(new Vector2(startingNeighbours[i].x, startingNeighbours[i].y));
+            if(possibleRooms.Contains(new Vector2(startingNeighbours[i].x, startingNeighbours[i].y)))
+                possibleRooms.Remove(new Vector2(startingNeighbours[i].x, startingNeighbours[i].y));
         }
+        possibleRooms.RemoveAt(0);
+
         List<Vector3> endingNeighbours = CheckNeigbours(unusedRooms, unusedRooms.Count - 1, checkCorners, unusedRooms, crossCheck);
-        for (int i = 0; i < startingNeighbours.Count; i++)
+        for (int i = 0; i < endingNeighbours.Count; i++)
         {
-            possibleRooms.Remove(new Vector2(endingNeighbours[i].x, startingNeighbours[i].y));
+            if(possibleRooms.Contains(new Vector2(endingNeighbours[i].x, endingNeighbours[i].y)))
+            {
+                possibleRooms.Remove(new Vector2(endingNeighbours[i].x, endingNeighbours[i].y));
+                Debug.Log("Removed: n° " + i + ", pos: " + new Vector2(endingNeighbours[i].x, endingNeighbours[i].y));
+            }
         }
         possibleRooms.RemoveAt(possibleRooms.Count - 1);
 
@@ -164,20 +172,22 @@ public class SpaceShipRoomChooser : MonoBehaviour
 
     private void Choose2x2Rooms()
     {
-        List<Vector2> possibleRooms = AvailableRoomsList(true, 3);
-            
-        List<int> possibleDir = new List<int>();
-        Vector2 room = new Vector2();
-        Vector2 room2 = new Vector2();
-        Vector2 room3 = new Vector2();
-        Vector2 room4 = new Vector2();
-
         for (int a = 0; a < ammountOfBigRooms; a++)
         {
+            List<Vector2> possibleRooms = AvailableRoomsList(true, 3);
+            
+            List<int> possibleDir = new List<int>();
+            Vector2 room = new Vector2();
+            Vector2 room2 = new Vector2();
+            Vector2 room3 = new Vector2();
+            Vector2 room4 = new Vector2();
             bool foundRoom = false;
 
-            while (!foundRoom && possibleRooms.Count > 1){
-                int randomRoom = Random.Range(1, possibleRooms.Count);
+            Debug.Log("PossibleRooms Count: " + possibleRooms.Count);
+
+            while (!foundRoom && possibleRooms.Count > 0){
+                Debug.Log("while initiated");
+                int randomRoom = Random.Range(0, possibleRooms.Count);
 
                 List<Vector3> neighbours = CheckNeigbours(possibleRooms, randomRoom, true, unusedRooms, 3);
                 List<int> dir = GetNeighboursDirections(neighbours);
@@ -188,29 +198,32 @@ public class SpaceShipRoomChooser : MonoBehaviour
                 237 - lower left corner
                 348 - lower right corner
                 */
-                if (dir.Contains(1) && dir.Contains(2) && dir.Contains(5))
+                if (dir.Contains(1) && dir.Contains(2) && dir.Contains(5) || dir.Contains(1) && dir.Contains(4) && dir.Contains(6) || dir.Contains(2) && dir.Contains(3) && dir.Contains(7) || dir.Contains(3) && dir.Contains(4) && dir.Contains(8))
                 {
-                    foundRoom = true;
-                    possibleDir.Add(1);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(1) && dir.Contains(4) && dir.Contains(6))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(2);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(2) && dir.Contains(3) && dir.Contains(7))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(3);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(3) && dir.Contains(4) && dir.Contains(8))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(4);
-                    room = possibleRooms[randomRoom];
+                    if (dir.Contains(1) && dir.Contains(2) && dir.Contains(5))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(1);
+                        room = possibleRooms[randomRoom];
+                    }
+                    else if (dir.Contains(1) && dir.Contains(4) && dir.Contains(6))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(2);
+                        room = possibleRooms[randomRoom];
+                    }
+                    else if (dir.Contains(2) && dir.Contains(3) && dir.Contains(7))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(3);
+                        room = possibleRooms[randomRoom];
+                    }
+                    else if (dir.Contains(3) && dir.Contains(4) && dir.Contains(8))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(4);
+                        room = possibleRooms[randomRoom];
+                    }
                 }
                 else
                 {
@@ -219,40 +232,38 @@ public class SpaceShipRoomChooser : MonoBehaviour
                     Debug.Log("Pos: " + randomRoom);
                 }
             }
-
-            int randomDir = Random.Range(0, possibleDir.Count);
-            
-            Vector2 instPos = new Vector2();
-
-            switch (possibleDir[randomDir]){
-                case 1:
-                instPos = new Vector2(room.x - (gridSpacingOffset/2), room.y + (gridSpacingOffset/2));
-                room2 = new Vector2(room.x, room.y + gridSpacingOffset);
-                room3 = new Vector2(room.x - gridSpacingOffset, room.y);
-                room4 = new Vector2(room.x - gridSpacingOffset, room.y + gridSpacingOffset);
-                break;
-                case 2:
-                instPos = new Vector2(room.x + (gridSpacingOffset/2), room.y + (gridSpacingOffset/2));
-                room2 = new Vector2(room.x, room.y + gridSpacingOffset);
-                room3 = new Vector2(room.x + gridSpacingOffset, room.y);
-                room4 = new Vector2(room.x + gridSpacingOffset, room.y + gridSpacingOffset);
-                break;
-                case 3:
-                instPos = new Vector2(room.x - (gridSpacingOffset/2), room.y - (gridSpacingOffset/2));
-                room2 = new Vector2(room.x - gridSpacingOffset, room.y);
-                room3 = new Vector2(room.x, room.y - gridSpacingOffset);
-                room4 = new Vector2(room.x - gridSpacingOffset, room.y - gridSpacingOffset);
-                break;
-                case 4:
-                instPos = new Vector2(room.x + (gridSpacingOffset/2), room.y - (gridSpacingOffset/2));
-                room2 = new Vector2(room.x, room.y - gridSpacingOffset);
-                room3 = new Vector2(room.x + gridSpacingOffset, room.y);
-                room4 = new Vector2(room.x + gridSpacingOffset, room.y - gridSpacingOffset);
-                break;
-            }
-
             if (foundRoom)
             {
+                int randomDir = Random.Range(0, possibleDir.Count);
+            
+                Vector2 instPos = new Vector2();
+
+                switch (possibleDir[randomDir]){
+                    case 1:
+                    instPos = new Vector2(room.x - (gridSpacingOffset/2), room.y + (gridSpacingOffset/2));
+                    room2 = new Vector2(room.x, room.y + gridSpacingOffset);
+                    room3 = new Vector2(room.x - gridSpacingOffset, room.y);
+                    room4 = new Vector2(room.x - gridSpacingOffset, room.y + gridSpacingOffset);
+                    break;
+                    case 2:
+                    instPos = new Vector2(room.x + (gridSpacingOffset/2), room.y + (gridSpacingOffset/2));
+                    room2 = new Vector2(room.x, room.y + gridSpacingOffset);
+                    room3 = new Vector2(room.x + gridSpacingOffset, room.y);
+                    room4 = new Vector2(room.x + gridSpacingOffset, room.y + gridSpacingOffset);
+                    break;
+                    case 3:
+                    instPos = new Vector2(room.x - (gridSpacingOffset/2), room.y - (gridSpacingOffset/2));
+                    room2 = new Vector2(room.x - gridSpacingOffset, room.y);
+                    room3 = new Vector2(room.x, room.y - gridSpacingOffset);
+                    room4 = new Vector2(room.x - gridSpacingOffset, room.y - gridSpacingOffset);
+                    break;
+                    case 4:
+                    instPos = new Vector2(room.x + (gridSpacingOffset/2), room.y - (gridSpacingOffset/2));
+                    room2 = new Vector2(room.x, room.y - gridSpacingOffset);
+                    room3 = new Vector2(room.x + gridSpacingOffset, room.y);
+                    room4 = new Vector2(room.x + gridSpacingOffset, room.y - gridSpacingOffset);
+                    break;
+                }
                 unusedRooms.Remove(room);
                 unusedRooms.Remove(room2);
                 unusedRooms.Remove(room3);
@@ -276,23 +287,26 @@ public class SpaceShipRoomChooser : MonoBehaviour
         {
             bool foundRoom = false;
 
-            while (!foundRoom && possibleRooms.Count > 1){
-                int randomRoom = Random.Range(1, possibleRooms.Count);
+            while (!foundRoom && possibleRooms.Count > 0){
+                int randomRoom = Random.Range(0, possibleRooms.Count);
 
                 List<Vector3> neighbours = CheckNeigbours(possibleRooms, randomRoom, false, unusedRooms, 1);
                 List<int> dir = GetNeighboursDirections(neighbours);
                 
-                if (dir.Contains(1))
+                if(dir.Contains(1) || dir.Contains(3))
                 {
-                    foundRoom = true;
-                    possibleDir.Add(1);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(3))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(3);
-                    room = possibleRooms[randomRoom];
+                    if (dir.Contains(1))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(1);
+                        room = possibleRooms[randomRoom];
+                    }
+                    else
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(3);
+                        room = possibleRooms[randomRoom];
+                    }
                 }
                 else
                 {
@@ -338,8 +352,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
         {
             bool foundRoom = false;
 
-            while (!foundRoom && possibleRooms.Count > 1){
-                int randomRoom = Random.Range(1, possibleRooms.Count);
+            while (!foundRoom && possibleRooms.Count > 0){
+                int randomRoom = Random.Range(0, possibleRooms.Count);
 
                 List<Vector3> neighbours = CheckNeigbours(possibleRooms, randomRoom, false, unusedRooms, 1);
                 List<int> dir = GetNeighboursDirections(neighbours);
@@ -381,23 +395,26 @@ public class SpaceShipRoomChooser : MonoBehaviour
         {
             bool foundRoom = false;
 
-            while (!foundRoom && possibleRooms.Count > 1){
-                int randomRoom = Random.Range(1, possibleRooms.Count);
+            while (!foundRoom && possibleRooms.Count > 0){
+                int randomRoom = Random.Range(0, possibleRooms.Count);
 
                 List<Vector3> neighbours = CheckNeigbours(possibleRooms, randomRoom, false, unusedRooms, 2);
                 List<int> dir = GetNeighboursDirections(neighbours);
                 
-                if (dir.Contains(2))
+                if(dir.Contains(2) || dir.Contains(4))
                 {
-                    foundRoom = true;
-                    possibleDir.Add(2);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(4))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(4);
-                    room = possibleRooms[randomRoom];
+                    if (dir.Contains(2))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(2);
+                        room = possibleRooms[randomRoom];
+                    }
+                    if (dir.Contains(4))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(4);
+                        room = possibleRooms[randomRoom];
+                    }
                 }
                 else
                 {
@@ -443,8 +460,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
         {
             bool foundRoom = false;
 
-            while (!foundRoom && possibleRooms.Count > 1){
-                int randomRoom = Random.Range(1, possibleRooms.Count);
+            while (!foundRoom && possibleRooms.Count > 0){
+                int randomRoom = Random.Range(0, possibleRooms.Count);
 
                 List<Vector3> neighbours = CheckNeigbours(possibleRooms, randomRoom, false, unusedRooms, 2);
                 List<int> dir = GetNeighboursDirections(neighbours);
@@ -487,8 +504,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
         {
             bool foundRoom = false;
             
-            while (!foundRoom && possibleRooms.Count > 1){
-                int randomRoom = Random.Range(1, possibleRooms.Count);
+            while (!foundRoom && possibleRooms.Count > 0){
+                int randomRoom = Random.Range(0, possibleRooms.Count);
 
                 List<Vector3> neighbours = CheckNeigbours(possibleRooms, randomRoom, false, unusedRooms, 3);
                 List<int> dir = GetNeighboursDirections(neighbours);
@@ -499,29 +516,32 @@ public class SpaceShipRoomChooser : MonoBehaviour
                 23 - down left
                 34 - down right
                 */
-                if (dir.Contains(1) && dir.Contains(2))
+                if(dir.Contains(1) && dir.Contains(2) || dir.Contains(1) && dir.Contains(4) || dir.Contains(2) && dir.Contains(3) || dir.Contains(3) && dir.Contains(4))
                 {
-                    foundRoom = true;
-                    possibleDir.Add(1);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(1) && dir.Contains(4))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(2);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(2) && dir.Contains(3))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(3);
-                    room = possibleRooms[randomRoom];
-                }
-                if (dir.Contains(3) && dir.Contains(4))
-                {
-                    foundRoom = true;
-                    possibleDir.Add(4);
-                    room = possibleRooms[randomRoom];
+                    if (dir.Contains(1) && dir.Contains(2))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(1);
+                        room = possibleRooms[randomRoom];
+                    }
+                    if (dir.Contains(1) && dir.Contains(4))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(2);
+                        room = possibleRooms[randomRoom];
+                    }
+                    if (dir.Contains(2) && dir.Contains(3))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(3);
+                        room = possibleRooms[randomRoom];
+                    }
+                    if (dir.Contains(3) && dir.Contains(4))
+                    {
+                        foundRoom = true;
+                        possibleDir.Add(4);
+                        room = possibleRooms[randomRoom];
+                    }
                 }
                 else
                 {
