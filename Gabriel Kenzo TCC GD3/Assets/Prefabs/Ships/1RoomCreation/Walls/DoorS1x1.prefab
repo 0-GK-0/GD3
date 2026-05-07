@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6656253139950281787}
   - component: {fileID: 7223078854239970469}
   - component: {fileID: -5042906949247107124}
-  m_Layer: 0
+  - component: {fileID: -4292138311876875596}
+  m_Layer: 7
   m_Name: DoorS1x1
   m_TagString: DoorS
   m_Icon: {fileID: 0}
@@ -120,6 +121,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &-4292138311876875596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112903271006651942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3510e16f61bbf0f49aa08bf97d68008d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KillWall
+  tagToDie: KillAll
+  tagToDie2: KillAll
 --- !u!1001 &3298432852752666649
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6984281870976718845}
   - component: {fileID: 5263071630216272299}
   - component: {fileID: -613469066864566623}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallS1x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KillWall
   tagToDie: DoorS
+  tagToDie2: KillAll
 --- !u!50 &-613469066864566623
 Rigidbody2D:
   serializedVersion: 5

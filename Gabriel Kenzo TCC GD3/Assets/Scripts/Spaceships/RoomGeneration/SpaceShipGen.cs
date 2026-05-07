@@ -28,7 +28,7 @@ public class SpaceShipGen : MonoBehaviour
     {
         SpawnGrid();
         GenerateDoors();
-        roomChooser.ListRooms(usedPos);
+        roomChooser.ListRooms(usedPos, gridSpacingOffset);
     }
     //Grid
     private void SpawnGrid()

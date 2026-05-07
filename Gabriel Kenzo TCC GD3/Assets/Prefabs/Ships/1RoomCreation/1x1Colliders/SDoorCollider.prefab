@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 872894611017046569}
   - component: {fileID: 7634621491720811111}
   - component: {fileID: 2109036363713301429}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SDoorCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
