@@ -54,7 +54,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
     {
         for(int i = 0; i < ammountOfTreasureRooms; i++)
         {
-            int randomRoom = Random.Range(1, unusedRooms.Count);
+            int randomRoom = Random.Range(1, unusedRooms.Count - 1);
             int randomTreasure = Random.Range(0, treasureRoomModels.Count);
 
             Instantiate(treasureRoomModels[randomTreasure], unusedRooms[randomRoom], Quaternion.identity);
@@ -134,7 +134,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
             returnValue.Add(new Vector3(possibleNeighbours[i].x, possibleNeighbours[i].y, dir[i]));
         }
 
-        Debug.Log("Working. Count: " + returnValue.Count);
+        //Debug.Log("Working. Count: " + returnValue.Count);
         return returnValue;
     }
     private List<Vector2> AvailableRoomsList(bool checkCorners, int crossCheck)
@@ -155,7 +155,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
             if(possibleRooms.Contains(new Vector2(endingNeighbours[i].x, endingNeighbours[i].y)))
             {
                 possibleRooms.Remove(new Vector2(endingNeighbours[i].x, endingNeighbours[i].y));
-                Debug.Log("Removed: n° " + i + ", pos: " + new Vector2(endingNeighbours[i].x, endingNeighbours[i].y));
+                //Debug.Log("Removed: n° " + i + ", pos: " + new Vector2(endingNeighbours[i].x, endingNeighbours[i].y));
             }
         }
         possibleRooms.RemoveAt(possibleRooms.Count - 1);
@@ -228,8 +228,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
                 else
                 {
                     possibleRooms.RemoveAt(randomRoom);
-                    Debug.Log("Count: " + possibleRooms.Count);
-                    Debug.Log("Pos: " + randomRoom);
+                    //Debug.Log("Count: " + possibleRooms.Count);
+                    //Debug.Log("Pos: " + randomRoom);
                 }
             }
             if (foundRoom)
@@ -311,8 +311,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
                 else
                 {
                     possibleRooms.RemoveAt(randomRoom);
-                    Debug.Log("Count: " + possibleRooms.Count);
-                    Debug.Log("Pos: " + randomRoom);
+                    //Debug.Log("Count: " + possibleRooms.Count);
+                    //Debug.Log("Pos: " + randomRoom);
                 }
             }
 
@@ -366,8 +366,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
                 else
                 {
                     possibleRooms.RemoveAt(randomRoom);
-                    Debug.Log("Count: " + possibleRooms.Count);
-                    Debug.Log("Pos: " + randomRoom);
+                    //Debug.Log("Count: " + possibleRooms.Count);
+                    //Debug.Log("Pos: " + randomRoom);
                 }
             }
 
@@ -419,8 +419,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
                 else
                 {
                     possibleRooms.RemoveAt(randomRoom);
-                    Debug.Log("Count: " + possibleRooms.Count);
-                    Debug.Log("Pos: " + randomRoom);
+                    //Debug.Log("Count: " + possibleRooms.Count);
+                    //Debug.Log("Pos: " + randomRoom);
                 }
             }
 
@@ -474,8 +474,8 @@ public class SpaceShipRoomChooser : MonoBehaviour
                 else
                 {
                     possibleRooms.RemoveAt(randomRoom);
-                    Debug.Log("Count: " + possibleRooms.Count);
-                    Debug.Log("Pos: " + randomRoom);
+                    //Debug.Log("Count: " + possibleRooms.Count);
+                    //Debug.Log("Pos: " + randomRoom);
                 }
             }
 

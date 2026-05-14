@@ -258,12 +258,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceShipRoomChooser
   ammountOfTreasureRooms: 2
-  ammountOfBigRooms: 4
-  ammountOfTallRooms: 0
+  ammountOfBigRooms: 0
+  ammountOfTallRooms: 2
   ammountOfTallerRooms: 0
-  ammountOfWideRooms: 0
+  ammountOfWideRooms: 1
   ammountOfWiderRooms: 0
-  ammountOfLRooms: 0
+  ammountOfLRooms: 2
   treasureRoomModels:
   - {fileID: 6922864634754120410, guid: 7a1a15e8d8bbbc542b847717c8cbbf4d, type: 3}
   normalRoomModels:
