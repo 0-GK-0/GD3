@@ -28,12 +28,12 @@ public class PlayerMana : MonoBehaviour
     void Update()
     {
         NaturalRecovery();
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ManaLose(10);
-        }
 
-        //Mana bar
+        ManaBar();
+    }
+
+    private void ManaBar()
+    {
         if (_manaBar.fillAmount != (float)mana / (float)maxMana) _manaBar.fillAmount = (float)mana / (float)maxMana;
         if (_manaSpentBar.fillAmount != _manaBar.fillAmount) _manaSpentBar.fillAmount = Mathf.Lerp(_manaSpentBar.fillAmount, (float)mana / 100, lerpSpeed);
     }

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
-
     [Header("Speed")]
     public float moveSpeed;
 
@@ -15,7 +14,13 @@ public class PlayerMov : MonoBehaviour
 
     void Update()
     {
-        //Move
+        Move();   
+
+        GetAnimation();
+        SpriteFlip();
+    }
+    private void Move()
+    {
         _direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         rb.linearVelocity = _direction * moveSpeed;
         
@@ -24,17 +29,14 @@ public class PlayerMov : MonoBehaviour
             anim.SetFloat("moveX", Mathf.Abs(_direction.x));
             anim.SetFloat("moveY", _direction.y);
         }
-
-        GetAnimation();
-        SpriteFlip();
     }
-    void SpriteFlip()
+    private void SpriteFlip()
     {
         if (!spriteRenderer.flipX && _direction.x < 0) spriteRenderer.flipX = true;
         else if (spriteRenderer.flipX && _direction.x > 0) spriteRenderer.flipX = false;
     }
 
-    void GetAnimation()
+    private void GetAnimation()
     {
         if (rb.linearVelocity.magnitude != 0)
         {

@@ -40,17 +40,21 @@ public class PlayerHealth : MonoBehaviour
         if(invFrame > 0) invFrame -= Time.deltaTime;
 
         NaturalHeal();
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Dmg(10);
-        }
 
-        //Death
-        if (hp <= 0) SceneManager.LoadScene(_currentScene);
+        Death();
 
-        //HpBar
+        ControlHpBar();
+    }
+
+    private void ControlHpBar()
+    {
         if (hpBar.fillAmount != (float)hp / (float)maxHp) hpBar.fillAmount = (float)hp / (float)maxHp;
         if (hpSpentBar.fillAmount != hpBar.fillAmount) hpSpentBar.fillAmount = Mathf.Lerp(hpSpentBar.fillAmount, (float)hp / 100, _lerpSpeed);
+    }
+
+    private void Death()
+    {
+        if (hp <= 0) SceneManager.LoadScene(_currentScene);
     }
 
     private void NaturalHeal()
