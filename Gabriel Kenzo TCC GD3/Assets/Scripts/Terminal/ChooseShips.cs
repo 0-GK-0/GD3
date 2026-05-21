@@ -10,13 +10,18 @@ public class ChooseShips : MonoBehaviour
     [SerializeField] private GameObject shipButton;
     [SerializeField] private List<Ship> ships;
     private List<Ship> possibleShips;
-    private List<Ship> chosenShips;
+    [SerializeField] private List<Ship> chosenShips;
     [SerializeField] private List<Transform> shipPositions;
     private List<Transform> possibleShipPositions;
     
-
+    private void Start()
+    {
+        RamdomShips();
+        SpawnTerminalShips();
+    }
+    
     //Choose which ships to Spawn
-    public void RadomShips()
+    public void RamdomShips()
     {
         possibleShips = ships;
         for(int i = 0; i < numOfShips; i++)
@@ -26,6 +31,7 @@ public class ChooseShips : MonoBehaviour
             chosenShips.Add(possibleShips[shipNum]);
             possibleShips.RemoveAt(shipNum);
         }
+        Debug.Log("Ships Chosen");
     }
     //Spawn Ships in terminal
     public void SpawnTerminalShips()
@@ -35,8 +41,12 @@ public class ChooseShips : MonoBehaviour
         {
             int randomPos = Random.Range(0, possibleShipPositions.Count);
 
-            Instantiate(shipButton, possibleShipPositions[randomPos].position, Quaternion.identity);
+            GameObject obj = Instantiate(shipButton, possibleShipPositions[randomPos].position, Quaternion.identity);
+            obj.GetComponent<TerminalButton>().ChangeButton(chosenShips[i]);
+            obj.transform.parent = gameObject.transform;
+
             possibleShipPositions.RemoveAt(randomPos);
         }
+        Debug.Log("Ships Placed");
     }
 }

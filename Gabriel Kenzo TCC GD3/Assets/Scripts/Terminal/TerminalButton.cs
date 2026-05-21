@@ -19,9 +19,9 @@ public class TerminalButton : MonoBehaviour
     public void ChangeButton(Ship shipToSpawn)
     {
         buttonImg.sprite = shipToSpawn.shipIcon;
-        shipName.text = shipToSpawn.shipName;
+        /*shipName.text = shipToSpawn.shipName;
         shipLevel.text = shipToSpawn.shipLevel.ToString();
-        shipDescription.text = shipToSpawn.shipDescription;
+        shipDescription.text = shipToSpawn.shipDescription;*/
     }
     public void OpenDescription()
     {

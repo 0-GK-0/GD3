@@ -30,7 +30,7 @@ public class Ship : ScriptableObject
     [field: SerializeField] public int armoryRooms {get; private set;}
 
     [field: Header("Possible Rooms")]
-    [field: SerializeField] public List<DungeonRoomData> possibleBaseRooms {get; private set;}
+    /*[field: SerializeField] public List<DungeonRoomData> possibleBaseRooms {get; private set;}
     [field: SerializeField] public List<DungeonRoomData> possibleBigRooms {get; private set;}
     [field: SerializeField] public List<DungeonRoomData> posibleTreasureRooms {get; private set;}
     [field: SerializeField] public List<DungeonRoomData> possiblePuzzleRooms {get; private set;}
@@ -39,7 +39,7 @@ public class Ship : ScriptableObject
     [field: SerializeField] public List<DungeonRoomData> possibleReallyLongRooms {get; private set;}
     [field: SerializeField] public List<DungeonRoomData> possibleWideRooms {get; private set;}
     [field: SerializeField] public List<DungeonRoomData> possibleReallyWideRooms {get; private set;}
-    [field: SerializeField] public List<DungeonRoomData> possibleArmoryRooms {get; private set;}
+    [field: SerializeField] public List<DungeonRoomData> possibleArmoryRooms {get; private set;}*/
 
     [field: Header("UI")]
     [field: SerializeField] public Sprite shipIcon {get; private set;}
