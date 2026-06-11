@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class OpenInterface : MonoBehaviour
 {
-    [SerializeField] private GameObject cText;
+    [SerializeField] private GameObject iText;
     public KeyCode openKey;
-    public GameObject cInterface;
+    public GameObject iInterface;
     private bool isInside;
 
     private void Update()
     {
         if (Input.GetKeyDown(openKey) && isInside)
         {
-            cInterface.SetActive(true);
+            iInterface.SetActive(true);
         }
     }
 
@@ -20,14 +20,19 @@ public class OpenInterface : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInside = true;
-            cText.SetActive(true);
+            iText.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player")){
             isInside = false;
-            cText.SetActive(false);
+            iText.SetActive(false);
         }
+    }
+
+    public void CloseInterface()
+    {
+        iInterface.SetActive(false);
     }
 }

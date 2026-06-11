@@ -16,6 +16,8 @@ public class TerminalButton : MonoBehaviour
     public string namee, level, description;
     private Sprite shipIcon;
     private Ship btnShipData;
+    [SerializeField] private OpenInterface openInterface;
+    [SerializeField] private bool canClose;
 
     private void Start()
     {
@@ -26,6 +28,8 @@ public class TerminalButton : MonoBehaviour
         shipImage = shipMenu.transform.GetChild(1).gameObject.GetComponent<Image>();
         goButton = shipMenu.transform.GetChild(2).gameObject.GetComponent<goButton>();
 
+        openInterface = GameObject.FindWithTag("Terminal").gameObject.GetComponent<OpenInterface>();
+
         Debug.Log(shipMenu + ", " + shipName + ", " + shipLevel + ", " + shipDescription);
         Debug.Log("This worked");
         //shipMenu.SetActive(false);
@@ -33,7 +37,11 @@ public class TerminalButton : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(closeKey)) CloseDescription();
+        if(Input.GetKeyDown(closeKey)) 
+        {
+            if (canClose) CloseDescription();
+            else openInterface.CloseInterface();
+        }
     }
 
     public void ChangeButton(Ship shipToSpawn)
@@ -53,6 +61,7 @@ public class TerminalButton : MonoBehaviour
         shipImage.sprite = shipIcon;
         goButton.SetButton(btnShipData);
         shipMenu.SetActive(true);
+        canClose = false;
     }
     public void CloseDescription()
     {

@@ -11,7 +11,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
     public string endingRoomTpDestination;
     private float gridSpacingOffset;
 
-    private void Start()
+    public void ListRooms(List<Vector2> roomsToUse, float roomSize)
     {
         ammountOfBigRooms = shipDataHolder.bigRooms;
         ammountOfTreasureRooms = shipDataHolder.treasureRooms;
@@ -20,10 +20,9 @@ public class SpaceShipRoomChooser : MonoBehaviour
         ammountOfTallerRooms = shipDataHolder.reallyLongRooms;
         ammountOfWideRooms = shipDataHolder.wideRooms;
         ammountOfWiderRooms = shipDataHolder.reallyWideRooms;
-    }
 
-    public void ListRooms(List<Vector2> roomsToUse, float roomSize)
-    {
+        Debug.Log("Big: " + ammountOfBigRooms + ", Treasure: " + ammountOfTreasureRooms + ", L: " + ammountOfLRooms + ", Tall: " + ammountOfTallRooms + ", Taller: " + ammountOfTallerRooms + ", Wide: " + ammountOfWideRooms + ", Wider: " + ammountOfWiderRooms);
+        
         unusedRooms = roomsToUse;
         gridSpacingOffset = roomSize;
         
@@ -64,7 +63,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
     {
         for(int i = 0; i < ammountOfTreasureRooms; i++)
         {
-            int randomRoom = Random.Range(1, unusedRooms.Count - 1);
+            int randomRoom = Random.Range(1, unusedRooms.Count - 2);
             int randomTreasure = Random.Range(0, treasureRoomModels.Count);
 
             Instantiate(treasureRoomModels[randomTreasure], unusedRooms[randomRoom], Quaternion.identity);

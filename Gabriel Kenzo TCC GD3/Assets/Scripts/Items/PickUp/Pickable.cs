@@ -12,7 +12,7 @@ public class Pickable : MonoBehaviour
         if (Input.GetKeyDown(pickKey) && isInside)
         {
             var pItems = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerItems>();
-            pItems.items.Add(item);
+            pItems.AddItems(item);
 
             Destroy(gameObject);
         }

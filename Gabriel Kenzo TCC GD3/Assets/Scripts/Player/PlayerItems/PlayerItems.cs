@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore;
 
 public class PlayerItems : MonoBehaviour
 {
@@ -11,19 +10,10 @@ public class PlayerItems : MonoBehaviour
 
     public static PlayerItems instance;
 
-    private void Awake()
+    public void AddItems(GameObject item)
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        items.Add(item);
     }
-
     public void RemoveItems(GameObject item)
     {
         items.Remove(item);
@@ -39,9 +29,18 @@ public class PlayerItems : MonoBehaviour
             if(gameItems[i].itemType == GameItem.ItemType.glyph)
             {
                 glyphs.Add(gameItems[i]);
+                ItemsHolder.unlockedGlyphs.Add(gameItems[i]);
                 gameItems.RemoveAt(i);
                 i--;
             }
         }
+    }
+
+    public void EndStage()
+    {
+        foreach (GameObject obj in items){
+            ItemsHolder.items.Add(obj);
+        }
+        ItemsHolder.money += money;
     }
 }
