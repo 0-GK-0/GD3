@@ -11,7 +11,17 @@ public class SpaceShipRoomChooser : MonoBehaviour
     public string endingRoomTpDestination;
     private float gridSpacingOffset;
 
-    
+    private void Start()
+    {
+        ammountOfBigRooms = shipDataHolder.bigRooms;
+        ammountOfTreasureRooms = shipDataHolder.treasureRooms;
+        ammountOfLRooms = shipDataHolder.lRooms;
+        ammountOfTallRooms = shipDataHolder.longRooms;
+        ammountOfTallerRooms = shipDataHolder.reallyLongRooms;
+        ammountOfWideRooms = shipDataHolder.wideRooms;
+        ammountOfWiderRooms = shipDataHolder.reallyWideRooms;
+    }
+
     public void ListRooms(List<Vector2> roomsToUse, float roomSize)
     {
         unusedRooms = roomsToUse;

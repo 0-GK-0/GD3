@@ -13,6 +13,7 @@ TagManager:
   - enemySpawner
   - SceneController
   - KillAll
+  - DescriptionPanel
   layers:
   - Default
   - TransparentFX

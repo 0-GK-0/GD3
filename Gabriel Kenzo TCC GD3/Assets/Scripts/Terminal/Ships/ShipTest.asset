@@ -15,15 +15,15 @@ MonoBehaviour:
   <shipName>k__BackingField: A
   <shipDescription>k__BackingField: A
   <shipLevel>k__BackingField: 0
-  <gridX>k__BackingField: 5
-  <gridY>k__BackingField: 5
-  <bigRooms>k__BackingField: 2
+  <gridX>k__BackingField: 3
+  <gridY>k__BackingField: 3
+  <bigRooms>k__BackingField: 0
   <treasureRooms>k__BackingField: 3
   <puzzleRooms>k__BackingField: 0
   <lRooms>k__BackingField: 0
   <longRooms>k__BackingField: 0
   <reallyLongRooms>k__BackingField: 0
-  <wideRooms>k__BackingField: 1
+  <wideRooms>k__BackingField: 0
   <reallyWideRooms>k__BackingField: 0
   <armoryRooms>k__BackingField: 0
   <shipIcon>k__BackingField: {fileID: 1422828075645619769, guid: 51955fa369422f84ebab2115688f6830, type: 3}

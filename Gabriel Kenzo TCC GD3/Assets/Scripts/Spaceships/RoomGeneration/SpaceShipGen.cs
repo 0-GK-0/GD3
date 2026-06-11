@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +25,8 @@ public class SpaceShipGen : MonoBehaviour
 
     private void Start()
     {
+        gridX = shipDataHolder.gridX;
+        gridY = shipDataHolder.gridY;
         SpawnGrid();
         GenerateDoors();
         roomChooser.ListRooms(usedPos, gridSpacingOffset);
