@@ -622,7 +622,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
 
     private void ChooseRestOfRooms()
     {
-        for(int i = 1; i < unusedRooms.Count; i++)
+        for(int i = 1; i < unusedRooms.Count-1; i++)
         {
             int randomRoom = Random.Range(0, treasureRoomModels.Count);
 

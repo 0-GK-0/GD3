@@ -17,7 +17,8 @@ public class TerminalButton : MonoBehaviour
     private Sprite shipIcon;
     private Ship btnShipData;
     [SerializeField] private OpenInterface openInterface;
-    [SerializeField] private bool canClose;
+
+    private bool isOpen;
 
     private void Start()
     {
@@ -37,10 +38,10 @@ public class TerminalButton : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(closeKey)) 
+        if(Input.GetKeyDown(closeKey) && isOpen) 
         {
-            if (canClose) CloseDescription();
-            else openInterface.CloseInterface();
+            CloseDescription();
+            openInterface.canClose = true;
         }
     }
 
@@ -61,10 +62,12 @@ public class TerminalButton : MonoBehaviour
         shipImage.sprite = shipIcon;
         goButton.SetButton(btnShipData);
         shipMenu.SetActive(true);
-        canClose = false;
+        openInterface.canClose = false;
+        isOpen = true;
     }
     public void CloseDescription()
     {
         shipMenu.SetActive(false);
+        isOpen = false;
     }
 }

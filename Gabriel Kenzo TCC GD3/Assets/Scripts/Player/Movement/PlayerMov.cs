@@ -10,11 +10,18 @@ public class PlayerMov : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator anim;
 
+    public bool canMove;
+
     Vector2 _direction;
 
-    void Update()
+    private void Start()
     {
-        Move();   
+        canMove = true;
+    }
+
+    private void Update()
+    {
+        if (canMove) Move();   
 
         GetAnimation();
         SpriteFlip();
