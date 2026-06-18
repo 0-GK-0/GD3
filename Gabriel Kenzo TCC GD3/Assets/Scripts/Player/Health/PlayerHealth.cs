@@ -30,9 +30,16 @@ public class PlayerHealth : MonoBehaviour
     [field:SerializeField] public SwitchScene switchScene {get; private set;}
     [field:SerializeField] private string _currentScene;
 
+    [Header("Hitstop")]
+    [SerializeField] private Pause pause;
+    [SerializeField] private float hitsopDuration = 0.2f;
+
+    [Header("Camera Shake")]
+    [SerializeField] private CamShake camShake;
     private void Start()
     {
         hp = maxHp;
+        pause = GameObject.FindWithTag("EventSystem").GetComponent<Pause>();
     }
 
     private void Update()
@@ -88,6 +95,8 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator RedFlash()
     {
         _playerRender.color = Color.red;
+        camShake.shakeCam(5, hitsopDuration);
+        pause.Hitstop(hitsopDuration);
         yield return new WaitForSeconds(maxInvFrame);
         _playerRender.color = Color.white;
     }

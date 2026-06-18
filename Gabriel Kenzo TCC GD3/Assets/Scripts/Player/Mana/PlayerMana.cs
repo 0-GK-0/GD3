@@ -58,7 +58,11 @@ public class PlayerMana : MonoBehaviour
 
     public void ManaLose(int manaLost)
     {
-        if (mana < manaLost) StartCoroutine(NoManaText());
+        if (mana < manaLost) 
+        {
+            StartCoroutine(NoManaText());
+            return;
+        }
         mana -= manaLost;
 
         _timeLeftToMana = timeToMana;

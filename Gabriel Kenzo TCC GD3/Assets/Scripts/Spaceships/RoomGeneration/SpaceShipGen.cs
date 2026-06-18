@@ -23,12 +23,16 @@ public class SpaceShipGen : MonoBehaviour
     [Header("Room Chooser")]
     [SerializeField] private SpaceShipRoomChooser roomChooser;
 
+    [Header("Camera Boundary")]
+    [SerializeField] private CamBoundCollider camBoundCollider;
+
     private void Start()
     {
         gridX = shipDataHolder.gridX;
         gridY = shipDataHolder.gridY;
         SpawnGrid();
         GenerateDoors();
+        camBoundCollider.CreateBoundary(gridX, gridY, gridSpacingOffset);
         roomChooser.ListRooms(usedPos, gridSpacingOffset);
     }
     //Grid

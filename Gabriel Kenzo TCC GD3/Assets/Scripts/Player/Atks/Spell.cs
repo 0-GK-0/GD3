@@ -152,7 +152,7 @@ public class Spell : MonoBehaviour
             {
                 Vector3 mousePosition = Input.mousePosition;
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-                Instantiate(spell, mousePosition, Quaternion.Euler(0, 0, 0));
+                Instantiate(spell, mousePosition, Quaternion.identity);
             }
             else Instantiate(spell, aim.transform.position, aim.transform.rotation);
             currentAtkCdwn = atkCdwn;

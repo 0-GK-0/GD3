@@ -21,14 +21,16 @@ public class PlayerMov : MonoBehaviour
 
     private void Update()
     {
-        if (canMove) Move();   
+        if (canMove) Move();
+        else rb.linearVelocity = Vector2.zero;
 
         GetAnimation();
         SpriteFlip();
     }
     private void Move()
     {
-        _direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        _direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (_direction.magnitude > 1) _direction = _direction.normalized;
         rb.linearVelocity = _direction * moveSpeed;
         
         if(_direction != Vector2.zero)

@@ -15,6 +15,7 @@ TagManager:
   - KillAll
   - DescriptionPanel
   - Terminal
+  - EventSystem
   layers:
   - Default
   - TransparentFX
