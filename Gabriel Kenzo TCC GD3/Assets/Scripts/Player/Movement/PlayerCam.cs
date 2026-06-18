@@ -8,8 +8,12 @@ public class PlayerCam : MonoBehaviour
     [SerializeField] private GameObject camFocus;
     [SerializeField] private float camMoveSpeed = 0.95f;
 
+    [SerializeField] private Pause pause;
+
     private void Update()
     {
+        if (pause.isPaused) return;
+
         Vector3 mouseScreenPos = Input.mousePosition;
         mouseScreenPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
 

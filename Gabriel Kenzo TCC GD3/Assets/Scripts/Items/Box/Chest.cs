@@ -7,7 +7,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private GameObject openChest;
     public KeyCode openKey;
     public int item;
-    public List<GameObject> possibleItems;
+    public List<GameItem> possibleItems;
     //[SerializeField] private Transform itemInstPoint;
     public int minItems;
     public int maxItems;
@@ -24,7 +24,7 @@ public class Chest : MonoBehaviour
                 {
                     item = Random.Range(0, possibleItems.Count);
                     //Instantiate(possibleItems[item], itemInstPoint.position, Quaternion.identity);
-                    collision.gameObject.GetComponent<PlayerItems>().items.Add(possibleItems[item]);
+                    collision.gameObject.GetComponent<PlayerItems>().gameItems.Add(possibleItems[item]);
                 }
                 
                 Instantiate(openChest, transform.position, Quaternion.identity);

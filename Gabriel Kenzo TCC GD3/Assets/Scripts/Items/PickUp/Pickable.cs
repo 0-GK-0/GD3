@@ -4,7 +4,7 @@ public class Pickable : MonoBehaviour
 {
     [SerializeField] private GameObject pickText;
     public KeyCode pickKey = KeyCode.E;
-    public GameObject item;
+    public GameItem item;
     private bool isInside;
 
     private void Update()
