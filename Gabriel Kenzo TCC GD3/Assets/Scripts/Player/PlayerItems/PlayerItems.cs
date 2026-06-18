@@ -6,6 +6,7 @@ public class PlayerItems : MonoBehaviour
     public float money = 0;
     public List<GameObject> items;
     public List<GameItem> gameItems;
+    public List<GameItem> upgrades;
     public List<GameItem> glyphs;
 
     public static PlayerItems instance;
@@ -30,6 +31,32 @@ public class PlayerItems : MonoBehaviour
             {
                 glyphs.Add(gameItems[i]);
                 ItemsHolder.unlockedGlyphs.Add(gameItems[i]);
+                gameItems.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+    public void CheckUpgrades()
+    {
+        for(int i = 0; i < gameItems.Count; i++)
+        {
+            if(gameItems[i].itemType == GameItem.ItemType.upgrade)
+            {
+                glyphs.Add(gameItems[i]);
+                ItemsHolder.upgrades.Add(gameItems[i]);
+                gameItems.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+    public void CheckConsumables()
+    {
+        for(int i = 0; i < gameItems.Count; i++)
+        {
+            if(gameItems[i].itemType == GameItem.ItemType.consumable)
+            {
+                glyphs.Add(gameItems[i]);
+                ItemsHolder.consumables.Add(gameItems[i]);
                 gameItems.RemoveAt(i);
                 i--;
             }

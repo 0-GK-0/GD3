@@ -9,6 +9,8 @@ public class GameItem : ScriptableObject
     {
         glyph,
         upgrade,
+        general,
+        consumable,
     }
     public ItemType itemType;
 
