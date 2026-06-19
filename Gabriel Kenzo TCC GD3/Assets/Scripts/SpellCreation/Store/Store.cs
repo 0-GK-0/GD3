@@ -56,7 +56,7 @@ public class Store : MonoBehaviour
                     allItems.Remove(itemsToSell[itemNum]);
 
                     //Check if the bought item is a glyph
-                    if(itemsToSell[itemNum].itemType == GameItem.ItemType.glyph) pItems.CheckGlyphs();
+                    //if(itemsToSell[itemNum].itemType == GameItem.ItemType.glyph) pItems.CheckGlyphs();
                 }
             }
         }
@@ -71,7 +71,7 @@ public class Store : MonoBehaviour
         //Setting the UI interface
         itemName.text = item.itemName;
         itemPrice.text = item.itemPrice.ToString();
-        itemSprite = item.storeIcon;
+        itemSprite = item.icon;
         btns.Add(obj);
     }
 }

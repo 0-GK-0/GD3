@@ -14,11 +14,12 @@ public class GameItem : ScriptableObject
         consumable,
     }
     public ItemType itemType;
-    
+    [TextArea(4,4)]
+    public string description;
 
     [Header("Store")]
     public float itemPrice;
-    public Sprite storeIcon;
+    public Sprite icon;
     public Sprite boughtIcon;
 
     [Header("Other")]
