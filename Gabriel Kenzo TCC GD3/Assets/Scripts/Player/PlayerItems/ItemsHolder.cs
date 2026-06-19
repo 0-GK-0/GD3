@@ -4,9 +4,9 @@ using System.Collections.Generic;
 public class ItemsHolder
 {
     public static float money;
-    public static List<GameItem> items;
-    public static List<GameItem> gameItems;
-    public static List<GameItem> upgrades;
-    public static List<GameItem> consumables;
-    public static List<GameItem> unlockedGlyphs;
+    public static List<InventoryItem> items = new List<InventoryItem>();
+    public static List<InventoryItem> gameItems = new List<InventoryItem>();
+    public static List<InventoryItem> upgrades = new List<InventoryItem>();
+    public static List<InventoryItem> consumables = new List<InventoryItem>();
+    public static List<InventoryItem> unlockedGlyphs = new List<InventoryItem>();
 }

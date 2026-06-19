@@ -16,6 +16,7 @@ TagManager:
   - DescriptionPanel
   - Terminal
   - EventSystem
+  - ShopOwner
   layers:
   - Default
   - TransparentFX

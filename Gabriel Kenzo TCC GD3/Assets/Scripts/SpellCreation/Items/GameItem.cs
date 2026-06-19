@@ -21,7 +21,8 @@ public class GameItem : ScriptableObject
     public float itemPrice;
     public Sprite icon;
     public Sprite boughtIcon;
+    public bool singleBuy = false;
 
     [Header("Other")]
-    public int ammount;
+    public int amount;
 }

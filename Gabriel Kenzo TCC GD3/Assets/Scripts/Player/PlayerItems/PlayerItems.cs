@@ -17,26 +17,108 @@ public class PlayerItems : MonoBehaviour
     [SerializeField] private GameObject elseContainer;
 
     [Header("References")]
-    public static PlayerItems instance;
     [SerializeField] private GameObject itemBtn;
 
+
+    public void AddAll()
+    {
+        foreach (GameItem item in gameItems)
+        {
+            AddItems(item);
+        }
+    }
     public void AddItems(GameItem item)
     {
+        Debug.Log(item);
         if (item.itemType == GameItem.ItemType.general) AddGameItem(item, ItemsHolder.gameItems);
         else if (item.itemType == GameItem.ItemType.consumable) AddGameItem(item, ItemsHolder.consumables);
         else if (item.itemType == GameItem.ItemType.upgrade) AddGameItem(item, ItemsHolder.upgrades);
         else if (item.itemType == GameItem.ItemType.glyph) AddGameItem(item, ItemsHolder.unlockedGlyphs);
         else AddGameItem(item, ItemsHolder.items);
     }
-    public void RemoveItems(GameItem item, int ammount)
+    public void AddGameItem(GameItem item, List<InventoryItem> gameItemList)
+    {
+        Debug.Log($"{item}, {gameItemList}");
+        int index = gameItemList.FindIndex(x => x.itemData.id == item.id);
+        if (index >= 0)
+        {   
+            gameItemList[index].amount += item.amount;
+            gameItemList[index].amountText.text = gameItemList[index].amount.ToString();
+            return;
+        }
+        
+        InventoryItem newItem = new InventoryItem(item, item.amount);
+        gameItemList.Add(newItem);
+        if (item.itemType == GameItem.ItemType.general)
+        {
+            PlaceItem(newItem, generalContainer.transform);
+        }
+        else if (item.itemType == GameItem.ItemType.consumable)
+        {
+            PlaceItem(newItem, consumablesContainer.transform);
+        }
+        else if (item.itemType == GameItem.ItemType.glyph)
+        {
+            PlaceItem(newItem, glyphsContainer.transform);
+        }
+        else if (item.itemType == GameItem.ItemType.upgrade)
+        {
+            PlaceItem(newItem, upgradesContainer.transform);
+        }
+        else
+        {
+            PlaceItem(newItem, elseContainer.transform);
+        }
+    }
+
+    //Place in UI
+    public void PlaceItem(InventoryItem item, Transform container)
+    {
+        GameObject obj = Instantiate(itemBtn, container.transform);
+        obj.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.itemData.icon;
+        obj.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = item.itemData.itemName;
+        obj.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = item.amount.ToString();
+
+        item.amountText = obj.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>();
+    }
+
+    public void PlaceAll()
+    {
+        foreach (InventoryItem item in ItemsHolder.gameItems)
+        {
+            PlaceItem(item, generalContainer.transform);
+        }
+        foreach (InventoryItem item in ItemsHolder.consumables)
+        {
+            PlaceItem(item, consumablesContainer.transform);
+        }
+        foreach (InventoryItem item in ItemsHolder.unlockedGlyphs)
+        {
+            PlaceItem(item, glyphsContainer.transform);
+        }
+        foreach (InventoryItem item in ItemsHolder.upgrades)
+        {
+            PlaceItem(item, upgradesContainer.transform);
+        }
+        foreach (InventoryItem item in ItemsHolder.items)
+        {
+            PlaceItem(item, elseContainer.transform);
+        }
+    }
+    public void RemoveItems(GameItem item, int amount)
     {
         if (item.itemType == GameItem.ItemType.general)
         {
-            if (ItemsHolder.gameItems.Contains(item))
+            int index = ItemsHolder.gameItems.FindIndex(x => x.itemData.id == item.id);
+            if (index >= 0)
             {
-                if(ItemsHolder.gameItems[ItemsHolder.gameItems.IndexOf(item)].ammount >= ammount)
+                if(ItemsHolder.gameItems[index].amount >= amount)
                 {
-                    ItemsHolder.gameItems[ItemsHolder.gameItems.IndexOf(item)].ammount -= ammount;
+                    ItemsHolder.gameItems[index].amount -= amount;
+                    if(ItemsHolder.gameItems[index].amount == 0)
+                    {
+                        ItemsHolder.gameItems.RemoveAt(index);
+                    }
                 }
                 else
                 {
@@ -46,11 +128,16 @@ public class PlayerItems : MonoBehaviour
         }
         else if (item.itemType == GameItem.ItemType.consumable)
         {
-            if (ItemsHolder.consumables.Contains(item))
+            int index = ItemsHolder.consumables.FindIndex(x => x.itemData.id == item.id);
+            if (index >= 0)
             {
-                if(ItemsHolder.consumables[ItemsHolder.consumables.IndexOf(item)].ammount >= ammount)
+                if(ItemsHolder.consumables[index].amount >= amount)
                 {
-                    ItemsHolder.consumables[ItemsHolder.consumables.IndexOf(item)].ammount -= ammount;
+                    ItemsHolder.consumables[index].amount -= amount;
+                    if(ItemsHolder.consumables[index].amount == 0)
+                    {
+                        ItemsHolder.consumables.RemoveAt(index);
+                    }
                 }
                 else
                 {
@@ -60,11 +147,16 @@ public class PlayerItems : MonoBehaviour
         }
         else if (item.itemType == GameItem.ItemType.upgrade)
         {
-            if (ItemsHolder.upgrades.Contains(item))
+            int index = ItemsHolder.upgrades.FindIndex(x => x.itemData.id == item.id);
+            if (index >= 0)
             {
-                if(ItemsHolder.upgrades[ItemsHolder.upgrades.IndexOf(item)].ammount >= ammount)
+                if(ItemsHolder.upgrades[index].amount >= amount)
                 {
-                    ItemsHolder.upgrades[ItemsHolder.upgrades.IndexOf(item)].ammount -= ammount;
+                    ItemsHolder.upgrades[index].amount -= amount;
+                    if(ItemsHolder.upgrades[index].amount == 0)
+                    {
+                        ItemsHolder.upgrades.RemoveAt(index);
+                    }
                 }
                 else
                 {
@@ -76,9 +168,9 @@ public class PlayerItems : MonoBehaviour
         {
             if (ItemsHolder.unlockedGlyphs.Contains(item))
             {
-                if(ItemsHolder.unlockedGlyphs[ItemsHolder.unlockedGlyphs.IndexOf(item)].ammount >= ammount)
+                if(ItemsHolder.unlockedGlyphs[ItemsHolder.unlockedGlyphs.IndexOf(item)].amount >= amount)
                 {
-                    ItemsHolder.unlockedGlyphs[ItemsHolder.unlockedGlyphs.IndexOf(item)].ammount -= ammount;
+                    ItemsHolder.unlockedGlyphs[ItemsHolder.unlockedGlyphs.IndexOf(item)].amount -= amount;
                 }
                 else
                 {
@@ -88,111 +180,22 @@ public class PlayerItems : MonoBehaviour
         }*/
         else
         {
-            if (ItemsHolder.items.Contains(item))
+            int index = ItemsHolder.items.FindIndex(x => x.itemData.id == item.id);
+            if (index >= 0)
             {
-                if(ItemsHolder.items[ItemsHolder.items.IndexOf(item)].ammount >= ammount)
+                if(ItemsHolder.items[index].amount >= amount)
                 {
-                    ItemsHolder.items[ItemsHolder.items.IndexOf(item)].ammount -= ammount;
+                    ItemsHolder.items[index].amount -= amount;
+                    if(ItemsHolder.items[index].amount == 0)
+                    {
+                        ItemsHolder.items.RemoveAt(index);
+                    }
                 }
                 else
                 {
                     Debug.Log("Unable to Remove");
                 }
             }
-        }
-    }
-
-    public void AddGameItem(GameItem item, List<GameItem> gameItemList)
-    {
-        for (int i = 0; i < gameItemList.Count; i++)
-        {
-            if (gameItemList[i].id == item.id)
-            {
-                gameItemList[i].ammount += item.ammount;
-                return;
-            }
-        }
-        gameItemList.Add(item);
-        if (item.itemType == GameItem.ItemType.general)
-        {
-            PlaceGeneral(item);
-        }
-        else if (item.itemType == GameItem.ItemType.consumable)
-        {
-            PlaceConsumable(item);
-        }
-        else if (item.itemType == GameItem.ItemType.glyph)
-        {
-            PlaceGlyph(item);
-        }
-        else if (item.itemType == GameItem.ItemType.upgrade)
-        {
-            PlaceUpgrade(item);
-        }
-        else
-        {
-            PlaceElse(item);
-        }
-    }
-
-    //Place in UI
-    public void PlaceGeneral(GameItem item)
-    {
-        GameObject obj = Instantiate(itemBtn, generalContainer.transform);
-        obj.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.icon;
-        obj.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = item.itemName;
-        obj.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = item.ammount.ToString();
-    }
-    public void PlaceConsumable(GameItem item)
-    {
-        GameObject obj = Instantiate(itemBtn, consumablesContainer.transform);
-        obj.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.icon;
-        obj.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = item.itemName;
-        obj.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = item.ammount.ToString();
-    }
-    public void PlaceGlyph(GameItem item)
-    {
-        GameObject obj = Instantiate(itemBtn, glyphsContainer.transform);
-        obj.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.icon;
-        obj.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = item.itemName;
-        obj.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = item.ammount.ToString();
-    }
-    public void PlaceUpgrade(GameItem item)
-    {
-        GameObject obj = Instantiate(itemBtn, upgradesContainer.transform);
-        obj.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.icon;
-        obj.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = item.itemName;
-        obj.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = item.ammount.ToString();
-    }
-    public void PlaceElse(GameItem item)
-    {
-        GameObject obj = Instantiate(itemBtn, elseContainer.transform);
-        obj.transform.GetChild(0).transform.GetComponent<Image>().sprite = item.icon;
-        obj.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = item.itemName;
-        obj.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = item.ammount.ToString();
-    }
-
-    public void PlaceAll()
-    {
-        foreach (GameItem item in ItemsHolder.gameItems)
-        {
-            PlaceGeneral(item);
-        }
-        foreach (GameItem item in ItemsHolder.consumables)
-        {
-            PlaceConsumable(item);
-        }
-        foreach (GameItem item in ItemsHolder.unlockedGlyphs)
-        {
-            PlaceGlyph(item);
-        }
-        foreach (GameItem item in ItemsHolder.upgrades)
-        {
-            PlaceUpgrade(item);
-        }
-        foreach (GameItem item in ItemsHolder.items)
-        {
-            PlaceElse(item);
         }
     }
 
