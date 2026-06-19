@@ -18,6 +18,5 @@ public class BuyBtn : MonoBehaviour
     public void Buy()
     {
         store.Buy(itemToBuy, shopButton);
-        pItems.AddItems(itemToBuy);
     }
 }

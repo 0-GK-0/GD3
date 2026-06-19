@@ -638,31 +638,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9554092}
   m_CullTransparentMesh: 1
---- !u!1 &25751395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6591741759143733536, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
-  m_PrefabInstance: {fileID: 6493663530654766584}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &25751403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 25751395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ada96f1b2aeb8d428b8c5ae08d1d19d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerItems
-  money: 0
-  gameItems: []
-  generalContainer: {fileID: 0}
-  consumablesContainer: {fileID: 0}
-  glyphsContainer: {fileID: 0}
-  upgradesContainer: {fileID: 0}
-  elseContainer: {fileID: 0}
-  itemBtn: {fileID: 0}
 --- !u!1 &34499533
 GameObject:
   m_ObjectHideFlags: 0
@@ -12971,10 +12946,8 @@ MonoBehaviour:
   itemContent: {fileID: 1950969818}
   storeItems: {fileID: 291041135}
   discount: 0
-  pItems: {fileID: 25751403}
+  pItems: {fileID: 0}
   btns: []
-  removeFromShop: 0
-  singleBuy: 0
 --- !u!1 &1945953677
 GameObject:
   m_ObjectHideFlags: 0
@@ -14019,14 +13992,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1321591819258188728, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653728322299938260, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2167182646910361457, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.01
@@ -14071,17 +14036,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasePlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 7592209305809451144, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6591741759143733536, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 25751403}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d4ad026688583a4ea73262cde5d4549, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -23,7 +23,7 @@ public class StoreBtn : MonoBehaviour
 
     private void Start()
     {
-        descriptionPanel = GameObject.FindWithTag("DescriptionPanel").transform.GetChild(1).GetChild(3).gameObject;
+        descriptionPanel = GameObject.FindWithTag("DescriptionPanel").transform.GetChild(0).GetChild(3).gameObject;
         itemName = descriptionPanel.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         itemPrice = descriptionPanel.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         shipDescription = descriptionPanel.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
