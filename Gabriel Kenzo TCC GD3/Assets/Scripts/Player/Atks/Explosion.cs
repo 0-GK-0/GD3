@@ -17,15 +17,19 @@ public class Explosion : MonoBehaviour
     public BasicEnemy basicEnemy;
 
     public float timeToDecay = 0.02f;
+    private bool doesDamage = true;
+    public float timeToDamage = 0.02f;
 
     void Update()
     {
         timeToDecay -= Time.deltaTime;
+        if(timeToDamage > 0) timeToDamage -= Time.deltaTime;
+        else doesDamage = false;
         if (timeToDecay <= 0) Destroy(gameObject);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && doesDamage)
         {
             enemy = collision.gameObject.GetComponent<EnemyHealth>();
             basicEnemy = collision.gameObject.GetComponent<BasicEnemy>();

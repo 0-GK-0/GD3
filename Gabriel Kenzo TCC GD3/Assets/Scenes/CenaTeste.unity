@@ -635,6 +635,18 @@ PrefabInstance:
       propertyPath: _manaSpentBar
       value: 
       objectReference: {fileID: 1440982095}
+    - target: {fileID: 1047765272494108683, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
+    - target: {fileID: 2728297204919793908, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
+    - target: {fileID: 2939208963484005950, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
     - target: {fileID: 3577653060323941106, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.84
@@ -675,6 +687,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6373926489701892126, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
+    - target: {fileID: 7218002425022495388, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
+    - target: {fileID: 7339400474188739896, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
     - target: {fileID: 7667538060714825086, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
       propertyPath: orthographic size
       value: 7
@@ -715,6 +739,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9100287960515767223, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
+    - target: {fileID: 9111326309857641055, guid: cd84ebca3c52f80479c56e4e415d72c1, type: 3}
+      propertyPath: <spell>k__BackingField
+      value: 
+      objectReference: {fileID: 3816514051533473105, guid: b1c86c3bf71e89e4aaefd3d220731431, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -774,7 +806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &665697368
 RectTransform:
   m_ObjectHideFlags: 0
