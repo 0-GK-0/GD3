@@ -575,7 +575,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
                     unusedRooms.Remove(room2);
                     unusedRooms.Remove(room3);
 
-                    randomModel = Random.Range(0, bigRoomModels.Count);
+                    randomModel = Random.Range(0, l1RoomModels.Count);
                     Instantiate(l1RoomModels[randomModel], room, Quaternion.identity);
                     break;
 
@@ -587,7 +587,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
                     unusedRooms.Remove(room2);
                     unusedRooms.Remove(room3);
 
-                    randomModel = Random.Range(0, bigRoomModels.Count);
+                    randomModel = Random.Range(0, l2RoomModels.Count);
                     Instantiate(l2RoomModels[randomModel], room, Quaternion.identity);
                     break;
 
@@ -599,7 +599,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
                     unusedRooms.Remove(room2);
                     unusedRooms.Remove(room3);
 
-                    randomModel = Random.Range(0, bigRoomModels.Count);
+                    randomModel = Random.Range(0, l3RoomModels.Count);
                     Instantiate(l3RoomModels[randomModel], room, Quaternion.identity);
                     break;
 
@@ -611,7 +611,7 @@ public class SpaceShipRoomChooser : MonoBehaviour
                     unusedRooms.Remove(room2);
                     unusedRooms.Remove(room3);
 
-                    randomModel = Random.Range(0, bigRoomModels.Count);
+                    randomModel = Random.Range(0, l4RoomModels.Count);
                     Instantiate(l4RoomModels[randomModel], room, Quaternion.identity);
                     break;
                 }

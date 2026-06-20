@@ -42,7 +42,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 655472589355082426, guid: 85d570d083e02ab40a43e327a1895db4, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3673026260347147453, guid: 85d570d083e02ab40a43e327a1895db4, type: 3}
       propertyPath: m_Name
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8858587503314189369, guid: 85d570d083e02ab40a43e327a1895db4, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

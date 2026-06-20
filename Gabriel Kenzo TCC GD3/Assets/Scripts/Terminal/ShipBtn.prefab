@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1372, y: 187}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2439757177552115117
 CanvasRenderer:
@@ -150,7 +150,10 @@ MonoBehaviour:
   shipName: {fileID: 0}
   shipLevel: {fileID: 0}
   shipDescription: {fileID: 0}
+  shipImage: {fileID: 0}
+  goButton: {fileID: 0}
   closeKey: 27
   namee: 
   level: 
   description: 
+  openInterface: {fileID: 0}
